@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-body h-full;
+  }
+}
+
+@layer components {
+  .page-container {
+    max-width: 1380px;
+    // @apply mx-auto;
+  }
+  .movie-list .swiper-slide {
+    width: 300px;
+    height: auto;
+  }
+  .banner .swiper {
+    height: 100%;
+  }
+}
