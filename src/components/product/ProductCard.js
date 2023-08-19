@@ -1,19 +1,28 @@
 import { Expand, ShoppingCart } from "lucide-react";
 
-import Currency from "components/Currency";
+import Currency from "components/ui/Currency";
 import IconButton from "components/button/IconButton";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({ data }) => {
+  console.log("ProductCard ~ data:", data);
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate(`/product/${data?.id}`);
+  };
   return (
-    <div className="bg-white group cursor-pointer rounded-xl border p-3 space-y-4 relative">
+    <div
+      className="bg-white group cursor-pointer rounded-xl border p-3 space-y-4 relative"
+      onClick={handleClick}
+    >
       <div className="aspect-square rounded-xl bg-gray-100 relative">
         <img
-          //   src={data?.image}
-          src="https://lh3.googleusercontent.com/u/0/drive-viewer/AITFw-wmoHppYtaIieN-Nu1VggcYEjBiTI3hux7ZqrFFla-7EgX9a-m4SaTLOGD1zGtGxt-_wyL3hwptrwVS4zYKMVxRi_4Z8w=w1003-h368"
+          src={`https://down-vn.img.susercontent.com/file/${data.image}`}
+          // src="https://lh3.googleusercontent.com/u/0/drive-viewer/AITFw-wmoHppYtaIieN-Nu1VggcYEjBiTI3hux7ZqrFFla-7EgX9a-m4SaTLOGD1zGtGxt-_wyL3hwptrwVS4zYKMVxRi_4Z8w=w1003-h368"
           fill="true"
-          alt=""
-          className="max-h-[276px] aspect-square object-cover rounded-md"
+          alt="Product"
+          className="aspect-square object-cover w-full rounded-md"
         />
         <div className="opacity-0 group-hover:opacity-100 transition absolute w-full px-6 bottom-5">
           <div className="flex gap-x-6 justify-center">
@@ -38,7 +47,7 @@ const ProductCard = ({ data }) => {
         <p className="font-semibold text-lg inline-block overflow-hidden text-ellipsis whitespace-nowrap w-full">
           {data.title}
         </p>
-        <p className="text-sm text-gray-500">{data.category.title}</p>
+        <p className="text-sm text-gray-500">{data?.category?.title}</p>
       </div>
 
       <div className="flex items-center justify-between ">

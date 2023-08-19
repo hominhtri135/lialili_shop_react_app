@@ -15,5 +15,8 @@ const API_URL = process.env.REACT_APP_API_URL;
 
 export const API = {
   getAllItems: () => `${API_URL}/item/getAllItems`,
+  getItems: (idProduct) => `${API_URL}/item/getItem/${idProduct}`,
   getAllCategories: () => `${API_URL}/item/getAllCategories`,
+  getFilterByCategory: (idCategory) =>
+    `${API_URL}/item/filterItemsByCategory/${idCategory}`,
 };

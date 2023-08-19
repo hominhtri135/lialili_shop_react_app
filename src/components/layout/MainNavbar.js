@@ -31,7 +31,7 @@ const MainNavbar = () => {
       {categories.length > 0 &&
         categories.map((route) => (
           <NavLink
-            to={`/${route.title.toLowerCase()}`}
+            to={`/${route.id}`}
             className="text-sm transition-colors hover:text-black text-neutral-500"
             style={({ isActive }) =>
               isActive
