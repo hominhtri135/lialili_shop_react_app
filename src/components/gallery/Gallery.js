@@ -24,10 +24,11 @@ const Gallery = ({ idProduct }) => {
           <Tab.Panel key={index}>
             <div className="aspect-square relative h-full w-full sm:rounded-lg overflow-hidden">
               <img
-                src={`https://lialili.fly.dev/storage/products/${image}`}
+                // src={`https://lialili.fly.dev/storage/products/${image}`}
+                src="https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcGYtbWlzYzE0LWFkajAwOTM3LWFkai1iXzEuanBn.jpg"
                 alt=""
                 fill="true"
-                className="object-cover object-center"
+                className="object-cover object-center w-full"
               />
             </div>
           </Tab.Panel>

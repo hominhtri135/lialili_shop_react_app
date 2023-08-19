@@ -3,14 +3,31 @@ import { Expand, ShoppingCart } from "lucide-react";
 import Currency from "components/ui/Currency";
 import IconButton from "components/button/IconButton";
 import React from "react";
+import useCart from "hooks/useCart";
+import useModal from "hooks/useModal";
 import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({ data }) => {
+  const previewModal = useModal();
+  const cart = useCart();
   const navigate = useNavigate();
   const handleClick = () => {
     navigate(`/product/${data?.id}`);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
+  const onPreview = (event) => {
+    event.stopPropagation();
+
+    previewModal.onOpen(data);
+  };
+
+  const onAddToCart = (event) => {
+    event.stopPropagation();
+
+    cart.addItem(data);
+  };
+
   return (
     <div
       className="bg-white group cursor-pointer rounded-xl border p-3 space-y-4 relative"
@@ -19,8 +36,8 @@ const ProductCard = ({ data }) => {
       <div className="aspect-square rounded-xl bg-gray-100 relative">
         <img
           // src={`https://down-vn.img.susercontent.com/file/${data.image.split(".")[0]}`}
-          src={`https://lialili.fly.dev/storage/product_image/${data.image}`}
-          // src="https://lh3.googleusercontent.com/u/0/drive-viewer/AITFw-wmoHppYtaIieN-Nu1VggcYEjBiTI3hux7ZqrFFla-7EgX9a-m4SaTLOGD1zGtGxt-_wyL3hwptrwVS4zYKMVxRi_4Z8w=w1003-h368"
+          // src={`https://lialili.fly.dev/storage/product_image/${data.image}`}
+          src="https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcGYtbWlzYzE0LWFkajAwOTM3LWFkai1iXzEuanBn.jpg"
           fill="true"
           alt="Product"
           className="aspect-square object-cover w-full rounded-md"
@@ -28,11 +45,11 @@ const ProductCard = ({ data }) => {
         <div className="opacity-0 group-hover:opacity-100 transition absolute w-full px-6 bottom-5">
           <div className="flex gap-x-6 justify-center">
             <IconButton
-              onClick={() => {}}
+              onClick={onPreview}
               icon={<Expand size={20} className="text-gray-600"></Expand>}
             ></IconButton>
             <IconButton
-              onClick={() => {}}
+              onClick={onAddToCart}
               icon={
                 <ShoppingCart
                   size={20}

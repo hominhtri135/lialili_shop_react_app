@@ -3,6 +3,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 
 import { Route, Routes } from "react-router-dom";
 
+import CartPage from "pages/CartPage";
 import CategoryPage from "pages/CategoryPage";
 import { Fragment } from "react";
 import HomePage from "pages/HomePage";
@@ -24,6 +25,7 @@ function App() {
             path="/product/:idProduct"
             element={<ProductPage></ProductPage>}
           ></Route>
+          <Route path="/cart" element={<CartPage></CartPage>}></Route>
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
