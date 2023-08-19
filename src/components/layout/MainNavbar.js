@@ -28,21 +28,20 @@ const MainNavbar = () => {
 
   return (
     <div className="mx-6 flex items-center space-x-4 lg:space-x-6">
-      {categories.length > 0 &&
-        categories.map((route) => (
-          <NavLink
-            to={`/${route.id}`}
-            className="text-sm transition-colors hover:text-black text-neutral-500"
-            style={({ isActive }) =>
-              isActive
-                ? { fontWeight: "700", color: "black" }
-                : { fontWeight: "500" }
-            }
-            key={route.id}
-          >
-            {route.title}
-          </NavLink>
-        ))}
+      {categories.map((route) => (
+        <NavLink
+          to={`/category/${route.id}`}
+          className="text-base transition-colors hover:text-black text-neutral-500"
+          style={({ isActive }) =>
+            isActive
+              ? { fontWeight: "700", color: "black" }
+              : { fontWeight: "500" }
+          }
+          key={route.id}
+        >
+          {route.title}
+        </NavLink>
+      ))}
     </div>
   );
 };

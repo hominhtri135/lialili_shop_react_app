@@ -1,3 +1,6 @@
+import "swiper/scss";
+import "react-loading-skeleton/dist/skeleton.css";
+
 import { Route, Routes } from "react-router-dom";
 
 import CategoryPage from "pages/CategoryPage";
@@ -14,7 +17,7 @@ function App() {
         <Route path="/" element={<Main></Main>}>
           <Route index element={<HomePage></HomePage>}></Route>
           <Route
-            path="/:caterory"
+            path="/category/:idCategory"
             element={<CategoryPage></CategoryPage>}
           ></Route>
           <Route

@@ -1,9 +1,6 @@
-import { API, fetcher } from "apiConfig/apiConfig";
-
 import NoResults from "components/layout/NoResults";
 import ProductCard from "./ProductCard";
 import React from "react";
-import useSWR from "swr";
 
 const ProductList = ({ title, items }) => {
   if (!items) return null;

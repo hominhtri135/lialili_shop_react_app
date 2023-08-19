@@ -10,7 +10,7 @@ const GalleryTab = ({ image }) => {
         <>
           <span className="absolute h-full w-full aspect-square inset-0 overflow-hidden rounded-md">
             <img
-              src={`https://down-vn.img.susercontent.com/file/${image}`}
+              src={`https://lialili.fly.dev/storage/products/${image}`}
               alt=""
               fill="true"
               className="object-cover object-center"

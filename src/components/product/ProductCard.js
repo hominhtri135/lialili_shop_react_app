@@ -6,10 +6,10 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({ data }) => {
-  console.log("ProductCard ~ data:", data);
   const navigate = useNavigate();
   const handleClick = () => {
     navigate(`/product/${data?.id}`);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
   return (
     <div
@@ -18,7 +18,8 @@ const ProductCard = ({ data }) => {
     >
       <div className="aspect-square rounded-xl bg-gray-100 relative">
         <img
-          src={`https://down-vn.img.susercontent.com/file/${data.image}`}
+          // src={`https://down-vn.img.susercontent.com/file/${data.image.split(".")[0]}`}
+          src={`https://lialili.fly.dev/storage/product_image/${data.image}`}
           // src="https://lh3.googleusercontent.com/u/0/drive-viewer/AITFw-wmoHppYtaIieN-Nu1VggcYEjBiTI3hux7ZqrFFla-7EgX9a-m4SaTLOGD1zGtGxt-_wyL3hwptrwVS4zYKMVxRi_4Z8w=w1003-h368"
           fill="true"
           alt="Product"
