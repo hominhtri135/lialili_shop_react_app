@@ -1,5 +1,7 @@
-import "swiper/scss";
 import "react-loading-skeleton/dist/skeleton.css";
+import "swiper/scss";
+import "swiper/scss/navigation";
+import "swiper/scss/pagination";
 
 import { Route, Routes } from "react-router-dom";
 

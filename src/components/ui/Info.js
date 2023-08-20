@@ -13,6 +13,7 @@ const Info = ({ data }) => {
 
     cart.addItem(data);
   };
+
   return (
     <div>
       <h1 className="text-3xl font-bold text-gray-900">{data?.title}</h1>
@@ -27,11 +28,19 @@ const Info = ({ data }) => {
       <div className="flex flex-col gap-y-6">
         <div className="flex items-center gap-x-4">
           <h3 className="font-semibold text-black">Size:</h3>
-          <div>{data?.size || "S, M, L"}</div>
+          <div className="flex justify-start gap-4">
+            {data?.product_attributes.map((item) => (
+              <div key={item.id}>{item.size}</div>
+            ))}
+          </div>
         </div>
         <div className="flex items-center gap-x-4">
           <h3 className="font-semibold text-black">Color:</h3>
-          <div>{data?.color || "Vàng"}</div>
+          <div className="flex justify-start gap-4">
+            {data?.product_attributes.map((item) => (
+              <div key={item.id}>{item.color}</div>
+            ))}
+          </div>
         </div>
         <div className="flex items-start gap-x-4 ">
           <h3 className="font-semibold text-black">Description:</h3>

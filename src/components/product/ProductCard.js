@@ -1,4 +1,3 @@
-import { API, fetcher } from "apiConfig/apiConfig";
 import { Expand, ShoppingCart } from "lucide-react";
 
 import Currency from "components/ui/Currency";
@@ -7,17 +6,11 @@ import React from "react";
 import useCart from "hooks/useCart";
 import useModal from "hooks/useModal";
 import { useNavigate } from "react-router-dom";
-import useSWR from "swr";
 
 const ProductCard = ({ data }) => {
   const previewModal = useModal();
   const cart = useCart();
   const navigate = useNavigate();
-
-  const { data: dataImagesProduct } = useSWR(
-    API.getProductImage(data?.id),
-    fetcher
-  );
 
   const handleClick = () => {
     navigate(`/product/${data?.id}`);
@@ -42,12 +35,12 @@ const ProductCard = ({ data }) => {
       onClick={handleClick}
     >
       <div className="aspect-square rounded-xl bg-gray-100 relative">
-        {dataImagesProduct && (
+        {data && (
           <img
-            src={`https://down-vn.img.susercontent.com/file/${
-              dataImagesProduct[0].image.split(".")[0]
-            }`}
-            // src={`https://lialili.fly.dev/storage/product_image/${data.image}`}
+            // src={`https://down-vn.img.susercontent.com/file/${
+            //   dataImagesProduct[0].image.split(".")[0]
+            // }`}
+            src={`${data?.image}`}
             // src="https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcGYtbWlzYzE0LWFkajAwOTM3LWFkai1iXzEuanBn.jpg"
             fill="true"
             alt="Product"
@@ -81,7 +74,7 @@ const ProductCard = ({ data }) => {
       </div>
 
       <div className="flex items-center justify-between ">
-        <Currency value={data.price}></Currency>
+        <Currency value={data?.price}></Currency>
       </div>
     </div>
   );

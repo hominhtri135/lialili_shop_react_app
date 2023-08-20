@@ -10,9 +10,7 @@ const GalleryTab = ({ image }) => {
         <>
           <span className="absolute h-full w-full aspect-square inset-0 overflow-hidden rounded-md">
             <img
-              src={`https://down-vn.img.susercontent.com/file/${
-                image.split(".")[0]
-              }`}
+              src={`${image}`}
               // src={`https://lialili.fly.dev/storage/products/${image}`}
               // src="https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcGYtbWlzYzE0LWFkajAwOTM3LWFkai1iXzEuanBn.jpg"
               alt=""

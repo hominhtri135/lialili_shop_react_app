@@ -2,38 +2,41 @@ import { API, fetcher } from "apiConfig/apiConfig";
 
 import Container from "components/layout/Container";
 import Gallery from "components/gallery/Gallery";
+import GalleryLoading from "components/loading/GalleryLoading";
 import Info from "components/ui/Info";
+import InfoLoading from "components/loading/InfoLoading";
 import ProductListSwiper from "components/product/ProductListSwiper";
+import ProductListSwiperLoading from "components/loading/ProductListSwiperLoading";
 import { useParams } from "react-router-dom";
 import useSWR from "swr";
 
 const ProductPage = () => {
   const { idProduct } = useParams();
 
-  const { data: dataProduct } = useSWR(
-    API.getProductAttribute(idProduct),
-    fetcher
-  );
+  const { data, isLoading } = useSWR(API.getItems(idProduct), fetcher);
 
-  if (!dataProduct) return null;
-  const product = dataProduct[0];
+  const product = data?.item;
 
   return (
     <div className="bg-white">
       <Container>
         <div className="px-4 py-10 sm:px-6 lg:px-8 min-h-screen">
           <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8">
-            {/* <Gallery images={product.image}></Gallery> */}
-            <Gallery idProduct={product?.product_id}></Gallery>
+            {isLoading && <GalleryLoading></GalleryLoading>}
+            {!isLoading && <Gallery images={product?.product_images}></Gallery>}
             <div className="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0">
-              <Info data={product}></Info>
+              {isLoading && <InfoLoading></InfoLoading>}
+              {!isLoading && <Info data={product}></Info>}
             </div>
           </div>
           <hr className="my-10" />
-          <ProductListSwiper
-            title="Related Items"
-            categoryId={product?.category_id}
-          ></ProductListSwiper>
+          {isLoading && <ProductListSwiperLoading></ProductListSwiperLoading>}
+          {!isLoading && (
+            <ProductListSwiper
+              title="Related Items"
+              categoryId={product?.category_id}
+            ></ProductListSwiper>
+          )}
         </div>
       </Container>
     </div>
