@@ -5,27 +5,9 @@ import NavbarLoading from "components/loading/NavbarLoading";
 import React from "react";
 import useSWR from "swr";
 
-// const data = [
-//   {
-//     id: 1,
-//     slug: "suits",
-//     name: "Suits",
-//   },
-//   {
-//     id: 2,
-//     slug: "shirts",
-//     name: "Shirts",
-//   },
-//   {
-//     id: 3,
-//     slug: "glasses",
-//     name: "Glasses",
-//   },
-// ];
 const MainNavbar = () => {
-  const { data: dataAPI, isLoading } = useSWR(API.getAllCategories, fetcher);
-  if (!dataAPI) return null;
-  const { categories } = dataAPI;
+  const { data, isLoading } = useSWR(API.getAllCategories, fetcher);
+  const categories = data?.categories || [];
 
   return (
     <div className="mx-6 flex items-center space-x-4 lg:space-x-6">
