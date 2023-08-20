@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 const Footer = () => {
   return (
-    <footer className="bg-white border-t">
-      <div className="mx-auto py-10">
+    <footer className={`bg-white border-t w-full`}>
+      <div className="mx-auto py-8">
         <p className="text-center text-xs text-black">
           &copy; 2023 Lialili Studio
         </p>

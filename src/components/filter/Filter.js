@@ -41,16 +41,26 @@ const Filter = ({ data, name, valueKey }) => {
       <div className="flex flex-wrap gap-2">
         {data.map((filter) => (
           <div key={filter.id} className="flex items-center">
-            <Button
+            {/* <Button
               className={`rounded-md text-sm p-2 border border-gray-300 ${
                 selectedValue === filter.id
-                  ? " text-white"
+                  ? "text-white"
                   : "bg-white text-gray-800"
               }`}
               onClick={() => onClick(filter.id)}
             >
               {filter.name}
-            </Button>
+            </Button> */}
+            <button
+              className={`w-auto px-5 py-3 disabled:cursor-not-allowed disabled:opacity-50 hover:opacity-75 transition rounded-md font-semibold text-sm border border-gray-300 ${
+                selectedValue === filter.id
+                  ? "bg-black text-white"
+                  : "bg-white text-gray-800"
+              }`}
+              onClick={() => onClick(filter.id)}
+            >
+              {filter.name}
+            </button>
           </div>
         ))}
       </div>

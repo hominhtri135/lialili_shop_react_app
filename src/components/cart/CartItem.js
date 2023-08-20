@@ -1,12 +1,20 @@
+import { API, fetcher } from "apiConfig/apiConfig";
+
 import Currency from "components/ui/Currency";
 import IconButton from "components/button/IconButton";
 import React from "react";
 import { X } from "lucide-react";
 import useCart from "hooks/useCart";
+import useSWR from "swr";
 
 const CartItem = ({ data }) => {
   console.log("CartItem ~ data:", data);
   const cart = useCart();
+
+  const { data: dataImagesProduct } = useSWR(
+    API.getProductImage(data?.id),
+    fetcher
+  );
 
   const onRemove = () => {
     cart.removeItem(data.id);
@@ -15,12 +23,16 @@ const CartItem = ({ data }) => {
   return (
     <li className="flex py-6 border-b">
       <div className="relative h-24 w-24 rounded-md overflow-hidden sm:h-48 sm:w-48">
-        <img
-          fill
-          src={data.image}
-          alt=""
-          className="object-cover object-center"
-        />
+        {dataImagesProduct && (
+          <img
+            fill
+            src={`https://down-vn.img.susercontent.com/file/${
+              dataImagesProduct[0].image.split(".")[0]
+            }`}
+            alt=""
+            className="object-cover object-center"
+          />
+        )}
       </div>
       <div className="relative ml-4 flex flex-1 flex-col justify-between sm:ml-6">
         <div className="absolute z-10 right-0 top-0">

@@ -3,7 +3,7 @@ import React from "react";
 
 const NotFound = () => {
   return (
-    <div class="flex items-center justify-center h-screen flex-col -mt-20">
+    <div class="flex items-center justify-center h-screen flex-col -mt-10 sm:-mt-20 mx-4">
       <svg
         width="226"
         height="249.135"

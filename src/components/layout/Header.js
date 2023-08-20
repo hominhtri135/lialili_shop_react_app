@@ -9,7 +9,7 @@ const Header = () => {
   return (
     <header className="border-b">
       <Container>
-        <div className="relative px-4 sm:px-6 lg:px-8 flex h-16 items-center justify-between">
+        <div className="relative px-4 sm:px-6 lg:px-8 flex h-16 items-center">
           <MobileNavbar></MobileNavbar>
           <div className="hidden lg:block absolute left-0 ml-4">
             <MainNavbar></MainNavbar>
@@ -20,7 +20,9 @@ const Header = () => {
           >
             <p className="font-bold text-2xl text-center">LIALILI</p>
           </NavLink>
-          <NavbarActions></NavbarActions>
+          <div className="absolute right-0 mr-4 sm:mr-6 lg:mr-8">
+            <NavbarActions></NavbarActions>
+          </div>
         </div>
       </Container>
     </header>
