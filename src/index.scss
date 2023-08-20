@@ -18,6 +18,24 @@
     width: 300px;
     height: auto;
   }
+
+  .pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    li {
+      @apply hover:opacity-75 transition rounded-md font-semibold text-base border border-gray-300;
+      a {
+        display: block;
+        text-align: center;
+        @apply px-5 py-3;
+      }
+    }
+    .selected {
+      @apply bg-black text-white;
+    }
+  }
 }
 
 .ellipsis {

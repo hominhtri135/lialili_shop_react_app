@@ -40,8 +40,11 @@ const MobileNavbar = () => {
             </div>
 
             <div className="py-4">
-              {categories.map((route) => (
-                <div className="shadow-md border-t py-4 flex items-center justify-center ">
+              {categories.map((route, index) => (
+                <div
+                  className="shadow-md border-t py-4 flex items-center justify-center"
+                  key={index}
+                >
                   <NavLink
                     to={`/category/${route.id}`}
                     className="text-xl transition-colors hover:text-black text-neutral-500"

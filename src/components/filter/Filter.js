@@ -1,6 +1,5 @@
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 
-import Button from "components/button/Button";
 import React from "react";
 import qs from "query-string";
 
@@ -23,6 +22,11 @@ const Filter = ({ data, name, valueKey }) => {
     if (current[valueKey] === id) {
       query[valueKey] = null;
     }
+
+    if (current["page"]) {
+      query["page"] = null;
+    }
+
     const url = qs.stringifyUrl(
       {
         url: location.pathname,
@@ -53,11 +57,11 @@ const Filter = ({ data, name, valueKey }) => {
             </Button> */}
             <button
               className={`w-auto px-5 py-3 disabled:cursor-not-allowed disabled:opacity-50 hover:opacity-75 transition rounded-md font-semibold text-sm border border-gray-300 ${
-                selectedValue === filter.id
+                selectedValue === filter.value
                   ? "bg-black text-white"
                   : "bg-white text-gray-800"
               }`}
-              onClick={() => onClick(filter.id)}
+              onClick={() => onClick(filter.value)}
             >
               {filter.name}
             </button>
