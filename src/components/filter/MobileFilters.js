@@ -36,8 +36,8 @@ const MobileFilters = ({ sizes, colors }) => {
             </div>
 
             <div className="p-4">
-              <Filter valueKey="sizeId" name="Sizes" data={sizes} />
-              <Filter valueKey="colorId" name="Colors" data={colors} />
+              <Filter valueKey="size" name="Sizes" data={sizes} />
+              <Filter valueKey="color" name="Colors" data={colors} />
             </div>
           </Dialog.Panel>
         </div>

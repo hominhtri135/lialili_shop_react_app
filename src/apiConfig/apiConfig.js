@@ -29,4 +29,7 @@ export const API = {
   },
   getSearchItems: (filter, page = 1) =>
     `${API_URL}/item/getSearchItems/${filter}?page=${page}`,
+  getFacebook: () => `https://www.facebook.com/Lialili.studio`,
+  getInstagram: () => `https://www.instagram.com/lialili.studio`,
+  getShopee: () => `https://shopee.vn/lialili.studio`,
 };

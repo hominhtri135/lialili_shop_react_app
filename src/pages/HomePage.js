@@ -34,7 +34,8 @@ const HomePage = () => {
 
   const handlePageClick = (event) => {
     setNextPage(event.selected + 1);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    // window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0 });
   };
 
   return (
