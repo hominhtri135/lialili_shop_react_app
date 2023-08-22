@@ -1,31 +1,31 @@
 {
   "files": {
-    "main.css": "/lialili_shop_react_app/static/css/main.e25f0140.css",
-    "main.js": "/lialili_shop_react_app/static/js/main.8bda14fb.js",
-    "static/js/426.ae9a3606.chunk.js": "/lialili_shop_react_app/static/js/426.ae9a3606.chunk.js",
-    "static/js/809.05732413.chunk.js": "/lialili_shop_react_app/static/js/809.05732413.chunk.js",
-    "static/js/553.98db5fb4.chunk.js": "/lialili_shop_react_app/static/js/553.98db5fb4.chunk.js",
+    "main.css": "/lialili_shop_react_app/static/css/main.37717521.css",
+    "main.js": "/lialili_shop_react_app/static/js/main.001763ad.js",
+    "static/js/426.1a4689d3.chunk.js": "/lialili_shop_react_app/static/js/426.1a4689d3.chunk.js",
+    "static/js/809.2b5f71b9.chunk.js": "/lialili_shop_react_app/static/js/809.2b5f71b9.chunk.js",
+    "static/js/553.4197181e.chunk.js": "/lialili_shop_react_app/static/js/553.4197181e.chunk.js",
     "static/js/922.3c09d864.chunk.js": "/lialili_shop_react_app/static/js/922.3c09d864.chunk.js",
-    "static/js/948.737e4149.chunk.js": "/lialili_shop_react_app/static/js/948.737e4149.chunk.js",
+    "static/js/948.108252a0.chunk.js": "/lialili_shop_react_app/static/js/948.108252a0.chunk.js",
     "static/js/787.05df4747.chunk.js": "/lialili_shop_react_app/static/js/787.05df4747.chunk.js",
     "static/js/981.18c86319.chunk.js": "/lialili_shop_react_app/static/js/981.18c86319.chunk.js",
     "static/js/250.2d687423.chunk.js": "/lialili_shop_react_app/static/js/250.2d687423.chunk.js",
     "static/js/143.99cc9a73.chunk.js": "/lialili_shop_react_app/static/js/143.99cc9a73.chunk.js",
     "index.html": "/lialili_shop_react_app/index.html",
-    "main.e25f0140.css.map": "/lialili_shop_react_app/static/css/main.e25f0140.css.map",
-    "main.8bda14fb.js.map": "/lialili_shop_react_app/static/js/main.8bda14fb.js.map",
-    "426.ae9a3606.chunk.js.map": "/lialili_shop_react_app/static/js/426.ae9a3606.chunk.js.map",
-    "809.05732413.chunk.js.map": "/lialili_shop_react_app/static/js/809.05732413.chunk.js.map",
-    "553.98db5fb4.chunk.js.map": "/lialili_shop_react_app/static/js/553.98db5fb4.chunk.js.map",
+    "main.37717521.css.map": "/lialili_shop_react_app/static/css/main.37717521.css.map",
+    "main.001763ad.js.map": "/lialili_shop_react_app/static/js/main.001763ad.js.map",
+    "426.1a4689d3.chunk.js.map": "/lialili_shop_react_app/static/js/426.1a4689d3.chunk.js.map",
+    "809.2b5f71b9.chunk.js.map": "/lialili_shop_react_app/static/js/809.2b5f71b9.chunk.js.map",
+    "553.4197181e.chunk.js.map": "/lialili_shop_react_app/static/js/553.4197181e.chunk.js.map",
     "922.3c09d864.chunk.js.map": "/lialili_shop_react_app/static/js/922.3c09d864.chunk.js.map",
-    "948.737e4149.chunk.js.map": "/lialili_shop_react_app/static/js/948.737e4149.chunk.js.map",
+    "948.108252a0.chunk.js.map": "/lialili_shop_react_app/static/js/948.108252a0.chunk.js.map",
     "787.05df4747.chunk.js.map": "/lialili_shop_react_app/static/js/787.05df4747.chunk.js.map",
     "981.18c86319.chunk.js.map": "/lialili_shop_react_app/static/js/981.18c86319.chunk.js.map",
     "250.2d687423.chunk.js.map": "/lialili_shop_react_app/static/js/250.2d687423.chunk.js.map",
     "143.99cc9a73.chunk.js.map": "/lialili_shop_react_app/static/js/143.99cc9a73.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e25f0140.css",
-    "static/js/main.8bda14fb.js"
+    "static/css/main.37717521.css",
+    "static/js/main.001763ad.js"
   ]
 }
