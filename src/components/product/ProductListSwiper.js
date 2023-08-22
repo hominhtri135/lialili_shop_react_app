@@ -36,12 +36,10 @@ const ProductListSwiper = ({ title, categoryId = 0 }) => {
               }}
             >
               {items.map((item) => (
-                <SwiperSlide key={item.itemid}>
+                <SwiperSlide key={item.id}>
                   <ProductCard data={item}></ProductCard>
                 </SwiperSlide>
               ))}
-
-              {/* <ProductCard key={item.id} data={item}></ProductCard> */}
             </Swiper>
           </div>
         </div>

@@ -29,6 +29,9 @@ export const API = {
   },
   getSearchItems: (filter, page = 1) =>
     `${API_URL}/item/getSearchItems/${filter}?page=${page}`,
+  login: () => `${API_URL}/auth/login`,
+  signup: () => `${API_URL}/auth/register`,
+  logout: () => `${API_URL}/auth/logout`,
   getFacebook: () => `https://www.facebook.com/Lialili.studio`,
   getInstagram: () => `https://www.instagram.com/lialili.studio`,
   getShopee: () => `https://shopee.vn/lialili.studio`,

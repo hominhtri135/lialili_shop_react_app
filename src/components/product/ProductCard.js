@@ -3,12 +3,17 @@ import { Expand, ShoppingCart } from "lucide-react";
 import Currency from "components/ui/Currency";
 import IconButton from "components/button/IconButton";
 import React from "react";
+import { toast } from "react-hot-toast";
+import useAuth from "hooks/useAuth";
 import useCart from "hooks/useCart";
-import useModal from "hooks/useModal";
 import { useNavigate } from "react-router-dom";
+import useProduct from "hooks/useProduct";
 
 const ProductCard = ({ data }) => {
-  const previewModal = useModal();
+  const previewModal = useProduct();
+  const authModal = useAuth((state) => state);
+  const { isUserValid } = useAuth((state) => state);
+
   const cart = useCart();
   const navigate = useNavigate();
 
@@ -25,7 +30,11 @@ const ProductCard = ({ data }) => {
 
   const onAddToCart = (event) => {
     event.stopPropagation();
-
+    if (!isUserValid) {
+      toast.error("Please login to add to cart");
+      authModal.onOpen("login");
+      return;
+    }
     cart.addItem(data);
   };
 

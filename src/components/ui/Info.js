@@ -2,15 +2,23 @@ import Button from "components/button/Button";
 import Currency from "./Currency";
 import React from "react";
 import { ShoppingCart } from "lucide-react";
+import { toast } from "react-hot-toast";
+import useAuth from "hooks/useAuth";
 import useCart from "hooks/useCart";
 
 const Info = ({ data }) => {
   console.log("Info ~ data:", data);
-
+  const authModal = useAuth();
+  const { isUserValid } = useAuth((state) => state);
   const cart = useCart();
+
   const onAddToCart = (event) => {
     event.stopPropagation();
-
+    if (!isUserValid) {
+      toast.error("Please login to add to cart");
+      authModal.onOpen("login");
+      return;
+    }
     cart.addItem(data);
   };
 
@@ -18,9 +26,9 @@ const Info = ({ data }) => {
     <div>
       <h1 className="text-3xl font-bold text-gray-900">{data?.title}</h1>
       <div className="mt-3 flex items-end justify-between">
-        <p className="text-2xl text-gray-900">
+        <div className="text-2xl text-gray-900">
           <Currency value={data?.price}></Currency>
-        </p>
+        </div>
       </div>
 
       <hr className="my-4" />

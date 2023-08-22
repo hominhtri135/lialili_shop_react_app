@@ -17,13 +17,11 @@ const sizes = [
   { id: "1", name: "S", value: "S" },
   { id: "2", name: "M", value: "M" },
   { id: "3", name: "L", value: "L" },
-  { id: "4", name: "S, M, L", value: "S, M, L" },
 ];
 const colors = [
   { id: "1", name: "Xanh", value: "Xanh" },
   { id: "2", name: "Đỏ", value: "Đỏ" },
   { id: "3", name: "Vàng", value: "Vàng" },
-  { id: "4", name: "Xanh đen, Hồng", value: "Xanh đen, Hồng" },
 ];
 
 const CategoryPage = () => {

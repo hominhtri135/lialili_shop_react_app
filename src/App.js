@@ -31,8 +31,8 @@ function App() {
               element={<ProductPage></ProductPage>}
             ></Route>
             <Route path="/cart" element={<CartPage></CartPage>}></Route>
-            <Route path="*" element={<NotFound />} />
           </Route>
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
     </Fragment>

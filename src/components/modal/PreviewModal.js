@@ -2,11 +2,11 @@ import Gallery from "components/gallery/Gallery";
 import Info from "components/ui/Info";
 import Modal from "./Modal";
 import React from "react";
-import useModal from "hooks/useModal";
+import useProduct from "hooks/useProduct";
 
 const PreviewModal = () => {
-  const previewModal = useModal();
-  const product = useModal((state) => state.data);
+  const previewModal = useProduct();
+  const product = useProduct((state) => state.data);
 
   if (!product) {
     return null;

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 
+import AuthModal from "components/modal/AuthModal";
 import PreviewModal from "components/modal/PreviewModal";
 
 const ModalProvider = () => {
@@ -16,6 +17,7 @@ const ModalProvider = () => {
   return (
     <>
       <PreviewModal />
+      <AuthModal />
     </>
   );
 };
