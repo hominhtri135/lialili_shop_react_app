@@ -25,6 +25,7 @@ const useCart = create(
         set({ items: [...get().items.filter((item) => item.id !== id)] });
       },
       removeAll: () => set({ items: [] }),
+      setItems: (data) => set({ items: data }),
     }),
     {
       name: "cart-storage",

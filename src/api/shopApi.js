@@ -9,5 +9,9 @@ const shopApi = {
     const url = `/shop/deleteCartItem/${id}`;
     return axiosClient.delete(url);
   },
+  getAllCart: () => {
+    const url = `/shop/getAllCartItems`;
+    return axiosClient.get(url);
+  },
 };
 export default shopApi;

@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 
 import authApi from "api/authApi";
+import shopApi from "api/shopApi";
 import { toast } from "react-hot-toast";
 import useAuth from "hooks/useAuth";
+import useCart from "hooks/useCart";
 
 const Login = () => {
   const authModal = useAuth();
+  const cart = useCart();
   const dataRemember = JSON.parse(localStorage.getItem("remember"));
   const [isLoading, setIsLoading] = useState(false);
   const [checked, setChecked] = useState(dataRemember ? true : false);
@@ -66,6 +69,13 @@ const Login = () => {
           password: "",
           role: "customer",
         });
+
+        try {
+          const response = await shopApi.getAllCart();
+          cart.setItems(response.cartItems);
+        } catch (error) {
+          toast.error("ErrorCart: " + error?.response?.message);
+        }
 
         authModal.onClose();
         toast.success("Login success");

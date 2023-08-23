@@ -11,7 +11,6 @@ import useSWR from "swr";
 const MobileNavbar = () => {
   const [open, setOpen] = useState(false);
   const { data, isLoading } = useSWR({}, categoryApi.getAll);
-  console.log("MainNavbar ~ data:", data);
   const categories = data?.categories || [];
 
   const onOpen = () => setOpen(true);
