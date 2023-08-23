@@ -13,7 +13,6 @@ const MyDropdown = () => {
   const authModal = useAuth();
   const cart = useCart();
   const user = JSON.parse(localStorage.getItem("user"));
-  console.log("MyDropdown ~ user:", user);
 
   const handleLogout = () => {
     try {

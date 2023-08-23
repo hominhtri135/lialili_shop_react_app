@@ -6,7 +6,6 @@ import useSWR from "swr";
 
 const MainNavbar = () => {
   const { data, isLoading } = useSWR({}, categoryApi.getAll);
-  console.log("MainNavbar ~ data:", data);
   const categories = data?.categories || [];
 
   return (

@@ -3,6 +3,7 @@ import { Expand, ShoppingCart } from "lucide-react";
 import Currency from "components/ui/Currency";
 import IconButton from "components/button/IconButton";
 import React from "react";
+import shopApi from "api/shopApi";
 import { toast } from "react-hot-toast";
 import useAuth from "hooks/useAuth";
 import useCart from "hooks/useCart";
@@ -28,14 +29,33 @@ const ProductCard = ({ data }) => {
     previewModal.onOpen(data);
   };
 
-  const onAddToCart = (event) => {
+  const onAddToCart = async (event) => {
     event.stopPropagation();
     if (!isUserValid) {
       toast.error("Please login to add to cart");
       authModal.onOpen("login");
       return;
     }
-    cart.addItem(data);
+
+    const toastId = toast.loading("Loading...");
+
+    try {
+      const itemCart = {
+        product_attribute_id: data?.product_attributes[0]?.id,
+        quantity: 1,
+      };
+
+      const response = await shopApi.addCart(itemCart);
+      console.log("ProductCard ~ response:", response);
+      cart.addItem(response.item);
+      toast.success("Item added to cart", {
+        id: toastId,
+      });
+    } catch (error) {
+      toast.error("Error: " + error?.response?.message, {
+        id: toastId,
+      });
+    }
   };
 
   return (

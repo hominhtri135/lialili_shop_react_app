@@ -2,13 +2,31 @@ import Currency from "components/ui/Currency";
 import IconButton from "components/button/IconButton";
 import React from "react";
 import { X } from "lucide-react";
+import shopApi from "api/shopApi";
+import { toast } from "react-hot-toast";
 import useCart from "hooks/useCart";
 
 const CartItem = ({ data }) => {
+  console.log("CartItem ~ data:", data);
   const cart = useCart();
 
   const onRemove = () => {
-    cart.removeItem(data.id);
+    console.log("onRemove ~ id:", data.id);
+
+    try {
+      const response = shopApi.deleteCartItem(data.id);
+      toast.promise(response, {
+        loading: "Loading",
+        success: (res) => {
+          cart.removeItem(data.id);
+          return `Item removed from cart. ${res?.message}`;
+        },
+        error: (err) => {
+          console.log("onRemove ~ err:", err);
+          return `Error: ${err?.message}`;
+        },
+      });
+    } catch (error) {}
   };
 
   return (
@@ -17,7 +35,7 @@ const CartItem = ({ data }) => {
         {data && (
           <img
             fill="true"
-            src={`${data.image}`}
+            src={`${data?.product?.image}`}
             alt=""
             className="object-cover object-center"
           />
@@ -29,16 +47,40 @@ const CartItem = ({ data }) => {
         </div>
         <div className="relative pr-9 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:pr-0">
           <div className="flex justify-between">
-            <p className=" text-lg font-semibold text-black">{data.title}</p>
-          </div>
-
-          <div className="mt-1 flex text-sm">
-            <p className="text-gray-500">{data?.color?.name || "Vàng"}</p>
-            <p className="ml-4 border-l border-gray-200 pl-4 text-gray-500">
-              {data?.size?.name || "S"}
+            <p className=" text-lg font-semibold text-black">
+              {data?.product?.title}
             </p>
           </div>
-          <Currency value={data.price} />
+
+          <div className="mt-1 flex justify-start sm:justify-center text-sm">
+            <p className="text-gray-500">
+              {data?.product_attributes?.color} |{" "}
+              {data?.product_attributes?.size}
+            </p>
+          </div>
+          <Currency value={data?.product?.price} />
+        </div>
+        <div class="flex items-center border border-gray-200 rounded w-fit">
+          <button
+            type="button"
+            class="w-10 h-10 leading-10 text-gray-600 transition hover:opacity-75"
+          >
+            -
+          </button>
+
+          <input
+            type="number"
+            id="Quantity"
+            value={data?.quantity}
+            class="h-10 w-16 border-transparent text-center [-moz-appearance:_textfield] sm:text-sm [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none"
+          />
+
+          <button
+            type="button"
+            class="w-10 h-10 leading-10 text-gray-600 transition hover:opacity-75"
+          >
+            +
+          </button>
         </div>
       </div>
     </li>
