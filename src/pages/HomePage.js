@@ -1,6 +1,5 @@
-import { API, fetcher } from "apiConfig/apiConfig";
 import { ArrowBigLeft, ArrowBigRight, Search } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import Billboard from "components/ui/Billboard";
 import Container from "components/layout/Container";
@@ -8,24 +7,22 @@ import ProductList from "components/product/ProductList";
 import ProductListLoading from "components/loading/ProductListLoading";
 import ReactPaginate from "react-paginate";
 import { debounce } from "lodash";
+import productsApi from "api/productsApi";
 import useSWR from "swr";
 
 const HomePage = () => {
   const [nextPage, setNextPage] = useState(1);
   const [filter, setFilter] = useState("");
-  const [url, setUrl] = useState(API.getAllItems(nextPage));
 
-  const { data, isLoading } = useSWR(url, fetcher);
+  const { data, isLoading } = useSWR(
+    filter ? [filter, { page: nextPage }] : { page: nextPage },
+    filter
+      ? ([filter, params]) => productsApi.getSearch(filter, params)
+      : productsApi.getAll
+  );
+
   const products = data?.items?.data || [];
   const total_pages = data?.items?.last_page > 1 ? data?.items?.last_page : 0;
-
-  useEffect(() => {
-    if (filter) {
-      setUrl(API.getSearchItems(filter, nextPage));
-    } else {
-      setUrl(API.getAllItems(nextPage));
-    }
-  }, [filter, nextPage]);
 
   const handleFilterChange = (e) => {
     setFilter(e.target.value);

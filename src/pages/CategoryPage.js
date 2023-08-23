@@ -1,4 +1,3 @@
-import { API, fetcher } from "apiConfig/apiConfig";
 import React, { useEffect, useState } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 
@@ -10,6 +9,7 @@ import MobileFilters from "components/filter/MobileFilters";
 import NoResults from "components/layout/NoResults";
 import ProductCard from "components/product/ProductCard";
 import ReactPaginate from "react-paginate";
+import categoryApi from "api/categoryApi";
 import qs from "query-string";
 import useSWR from "swr";
 
@@ -29,46 +29,30 @@ const CategoryPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [nextPage, setNextPage] = useState(1);
-  const [color, setColor] = useState("");
-  const [size, setSize] = useState("");
 
-  const [url, setUrl] = useState(
-    API.getFilterByCategory(
-      idCategory,
-      searchParams.get("page") || 1,
-      encodeURIComponent(searchParams.get("size")),
-      encodeURIComponent(searchParams.get("color"))
-    )
+  const [params, setParams] = useState({
+    color: searchParams.get("color"),
+    size: searchParams.get("size"),
+    page: searchParams.get("page") || 1,
+  });
+  console.log("CategoryPage ~ params:", params);
+
+  const { data, isLoading } = useSWR(
+    [idCategory, params],
+    ([idCategory, params]) => categoryApi.getAllItemById(idCategory, params)
   );
-  console.log("CategoryPage ~ url:", url);
-
-  const { data, isLoading } = useSWR(url, fetcher);
   console.log("CategoryPage ~ data:", data);
 
   const products = data?.items?.data || [];
   const total_pages = data?.items?.last_page > 1 ? data?.items?.last_page : 0;
 
   useEffect(() => {
-    setColor(searchParams.get("color"));
-    setSize(searchParams.get("size"));
-
-    if (color || size) {
-      setUrl(
-        API.getFilterByCategory(
-          idCategory,
-          nextPage,
-          encodeURIComponent(size),
-          encodeURIComponent(color)
-        )
-      );
-    } else {
-      setUrl(API.getFilterByCategory(idCategory, nextPage));
-    }
-  }, [color, size, nextPage, searchParams, idCategory]);
-
-  useEffect(() => {
-    setUrl(API.getFilterByCategory(idCategory));
-  }, [idCategory]);
+    setParams({
+      color: searchParams.get("color"),
+      size: searchParams.get("size"),
+      page: nextPage,
+    });
+  }, [nextPage, searchParams, idCategory]);
 
   const handlePageClick = (event) => {
     const current = qs.parse(searchParams.toString());

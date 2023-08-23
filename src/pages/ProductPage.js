@@ -1,5 +1,3 @@
-import { API, fetcher } from "apiConfig/apiConfig";
-
 import Container from "components/layout/Container";
 import Gallery from "components/gallery/Gallery";
 import GalleryLoading from "components/loading/GalleryLoading";
@@ -7,13 +5,14 @@ import Info from "components/ui/Info";
 import InfoLoading from "components/loading/InfoLoading";
 import ProductListSwiper from "components/product/ProductListSwiper";
 import ProductListSwiperLoading from "components/loading/ProductListSwiperLoading";
+import productsApi from "api/productsApi";
 import { useParams } from "react-router-dom";
 import useSWR from "swr";
 
 const ProductPage = () => {
   const { idProduct } = useParams();
 
-  const { data, isLoading } = useSWR(API.getItems(idProduct), fetcher);
+  const { data, isLoading } = useSWR(idProduct, productsApi.get);
 
   const product = data?.item;
 

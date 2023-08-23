@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
-import { API } from "apiConfig/apiConfig";
-import axios from "axios";
+import authApi from "api/authApi";
 import { toast } from "react-hot-toast";
 import useAuth from "hooks/useAuth";
 
@@ -56,11 +55,10 @@ const Login = () => {
 
     try {
       setIsLoading(true);
-      const response = await axios.post(API.login(), formData);
-      console.log("handleSubmit ~ response:", response);
+      const response = await authApi.login(formData);
 
-      if (response?.data?.user) {
-        localStorage.setItem("user", JSON.stringify(response.data.user));
+      if (response?.user) {
+        localStorage.setItem("user", JSON.stringify(response.user));
         authModal.setIsUserValid(true);
 
         setFormData({
@@ -72,13 +70,13 @@ const Login = () => {
         authModal.onClose();
         toast.success("Login success");
       }
-      if (response?.data?.message) {
-        toast.error("Error: " + response?.data?.message);
+      if (response?.message) {
+        toast.error("Error: " + response?.message);
       }
 
       setIsLoading(false);
     } catch (error) {
-      toast.error("Error: " + error?.response?.data?.message);
+      toast.error("Error: " + error?.response?.message);
     }
     setIsLoading(false);
   };

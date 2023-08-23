@@ -1,16 +1,13 @@
-import { API, fetcher } from "apiConfig/apiConfig";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import { Navigation } from "swiper/modules";
 import ProductCard from "./ProductCard";
 import React from "react";
+import categoryApi from "api/categoryApi";
 import useSWR from "swr";
 
 const ProductListSwiper = ({ title, categoryId = 0 }) => {
-  const { data: dataRelated } = useSWR(
-    API.getFilterByCategory(categoryId),
-    fetcher
-  );
+  const { data: dataRelated } = useSWR(categoryId, categoryApi.getAllItemById);
   console.log("ProductListSwiper ~ dataRelated:", dataRelated);
 
   if (!dataRelated) {

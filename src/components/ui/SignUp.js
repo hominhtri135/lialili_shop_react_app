@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
-import { API } from "apiConfig/apiConfig";
-import axios from "axios";
+import authApi from "api/authApi";
 import { toast } from "react-hot-toast";
 import useAuth from "hooks/useAuth";
 
@@ -32,9 +31,10 @@ const SignUp = () => {
     e.preventDefault();
     try {
       setIsLoading(true);
-      const response = await axios.post(API.signup(), formData);
-      if (response?.data?.user) {
-        localStorage.setItem("user", JSON.stringify(response.data.user));
+      const response = await authApi.register(formData);
+
+      if (response?.user) {
+        localStorage.setItem("user", JSON.stringify(response.user));
         authModal.setIsUserValid(true);
 
         setFormData({
@@ -47,12 +47,12 @@ const SignUp = () => {
         authModal.onClose();
         toast.success("Sign Up Success");
       }
-      if (response?.data?.message) {
-        toast.error("Error: " + response?.data?.message);
+      if (response?.message) {
+        toast.error("Error: " + response?.message);
       }
       setIsLoading(false);
     } catch (error) {
-      toast.error("Error: " + error?.response?.data?.message);
+      toast.error("Error: " + error?.response?.message);
     }
     setIsLoading(false);
   };

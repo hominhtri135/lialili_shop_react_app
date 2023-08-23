@@ -1,9 +1,8 @@
 import { LogOut, UserCog2 } from "lucide-react";
 import { Menu, Transition } from "@headlessui/react";
 
-import { API } from "apiConfig/apiConfig";
 import { Fragment } from "react";
-import axios from "axios";
+import authApi from "api/authApi";
 import { toast } from "react-hot-toast";
 import useAuth from "hooks/useAuth";
 import useCart from "hooks/useCart";
@@ -14,22 +13,21 @@ const MyDropdown = () => {
   const authModal = useAuth();
   const cart = useCart();
   const user = JSON.parse(localStorage.getItem("user"));
+  console.log("MyDropdown ~ user:", user);
 
   const handleLogout = () => {
     try {
-      const response = axios.get(API.logout(), {
-        headers: { Authorization: `Bearer ${user.token}` },
-      });
+      const response = authApi.logout();
 
       toast.promise(response, {
         loading: "Loading",
         success: (res) => {
           authModal.onLogout();
           cart.removeAll();
-          return `${res?.data?.message}`;
+          return `${res?.message}`;
         },
         error: (err) => {
-          return `Error: ${err?.response?.data?.message}`;
+          return `Error: ${err?.response?.message}`;
         },
       });
     } catch (error) {}

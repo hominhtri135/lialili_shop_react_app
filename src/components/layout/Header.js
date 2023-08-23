@@ -11,9 +11,6 @@ import useAuth from "hooks/useAuth";
 const Header = () => {
   const authModal = useAuth();
   const { isUserValid } = useAuth((state) => state);
-  const state = useAuth((state) => state);
-  console.log("Header ~ state:", state);
-  console.log("Header ~ isUserValid:", isUserValid);
 
   const onAuthen = (event) => {
     event.stopPropagation();

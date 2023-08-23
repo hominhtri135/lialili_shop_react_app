@@ -1,6 +1,5 @@
 import { Facebook, Instagram } from "lucide-react";
 
-import { API } from "apiConfig/apiConfig";
 import Container from "./Container";
 import { Link } from "react-router-dom";
 import React from "react";
@@ -38,7 +37,7 @@ const Footer = () => {
             </span>
             <div className="flex space-x-6 sm:justify-center">
               <Link
-                to={API.getFacebook()}
+                to={process.env.REACT_APP_FACEBOOK_URL}
                 className="text-gray-500 hover:text-gray-900"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -47,7 +46,7 @@ const Footer = () => {
               </Link>
 
               <Link
-                to={API.getInstagram()}
+                to={process.env.REACT_APP_INSTAGRAM_URL}
                 className="text-gray-500 hover:text-gray-900"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -56,7 +55,7 @@ const Footer = () => {
               </Link>
 
               <Link
-                to={API.getShopee()}
+                to={process.env.REACT_APP_SHOPEE_URL}
                 className="text-gray-500 hover:text-gray-900"
                 target="_blank"
                 rel="noopener noreferrer"

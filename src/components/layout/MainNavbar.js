@@ -1,12 +1,12 @@
-import { API, fetcher } from "apiConfig/apiConfig";
-
 import { NavLink } from "react-router-dom";
 import NavbarLoading from "components/loading/NavbarLoading";
 import React from "react";
+import categoryApi from "api/categoryApi";
 import useSWR from "swr";
 
 const MainNavbar = () => {
-  const { data, isLoading } = useSWR(API.getAllCategories, fetcher);
+  const { data, isLoading } = useSWR({}, categoryApi.getAll);
+  console.log("MainNavbar ~ data:", data);
   const categories = data?.categories || [];
 
   return (

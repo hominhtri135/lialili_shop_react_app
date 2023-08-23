@@ -1,4 +1,3 @@
-import { API, fetcher } from "apiConfig/apiConfig";
 import { AlignJustify, X } from "lucide-react";
 import React, { useState } from "react";
 
@@ -6,13 +5,14 @@ import Button from "components/button/Button";
 import { Dialog } from "@headlessui/react";
 import IconButton from "components/button/IconButton";
 import { NavLink } from "react-router-dom";
+import categoryApi from "api/categoryApi";
 import useSWR from "swr";
 
 const MobileNavbar = () => {
   const [open, setOpen] = useState(false);
-  const { data: dataAPI } = useSWR(API.getAllCategories, fetcher);
-  if (!dataAPI) return null;
-  const { categories } = dataAPI;
+  const { data, isLoading } = useSWR({}, categoryApi.getAll);
+  console.log("MainNavbar ~ data:", data);
+  const categories = data?.categories || [];
 
   const onOpen = () => setOpen(true);
   const onClose = () => setOpen(false);
@@ -40,25 +40,26 @@ const MobileNavbar = () => {
             </div>
 
             <div className="py-4">
-              {categories.map((route, index) => (
-                <div
-                  className="shadow-md border-t py-4 flex items-center justify-center"
-                  key={index}
-                >
-                  <NavLink
-                    to={`/category/${route.id}`}
-                    className="text-xl transition-colors hover:text-black text-neutral-500"
-                    style={({ isActive }) =>
-                      isActive
-                        ? { fontWeight: "700", color: "black" }
-                        : { fontWeight: "500" }
-                    }
-                    key={route.id}
+              {!isLoading &&
+                categories.map((route, index) => (
+                  <div
+                    className="shadow-md border-t py-4 flex items-center justify-center"
+                    key={index}
                   >
-                    {route.title}
-                  </NavLink>
-                </div>
-              ))}
+                    <NavLink
+                      to={`/category/${route.id}`}
+                      className="text-xl transition-colors hover:text-black text-neutral-500"
+                      style={({ isActive }) =>
+                        isActive
+                          ? { fontWeight: "700", color: "black" }
+                          : { fontWeight: "500" }
+                      }
+                      key={route.id}
+                    >
+                      {route.title}
+                    </NavLink>
+                  </div>
+                ))}
             </div>
           </Dialog.Panel>
         </div>
