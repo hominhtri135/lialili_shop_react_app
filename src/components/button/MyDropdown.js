@@ -26,7 +26,12 @@ const MyDropdown = () => {
           return `${res?.message}`;
         },
         error: (err) => {
-          return `Error: ${err?.response?.message}`;
+          if (err?.response?.data?.message === "Unauthenticated.") {
+            authModal.onLogout();
+            cart.removeAll();
+          }
+
+          return `Error: ${err?.response?.data.message}`;
         },
       });
     } catch (error) {}
