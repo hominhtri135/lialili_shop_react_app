@@ -6,19 +6,20 @@ import "swiper/scss/pagination";
 import { Fragment, Suspense, lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 
+import LoadingPage from "pages/LoadingPage";
 import Main from "components/layout/Main";
 
 // dynamic imports
-const CartPage = lazy(() => import("pages/CartPage"));
-const CategoryPage = lazy(() => import("pages/CategoryPage"));
-const HomePage = lazy(() => import("pages/HomePage"));
-const NotFound = lazy(() => import("pages/NotFound"));
-const ProductPage = lazy(() => import("pages/ProductPage"));
+const CartPage = lazy(() => delayLazy(import("pages/CartPage"), 500));
+const CategoryPage = lazy(() => delayLazy(import("pages/CategoryPage"), 500));
+const HomePage = lazy(() => delayLazy(import("pages/HomePage"), 500));
+const NotFound = lazy(() => delayLazy(import("pages/NotFound"), 500));
+const ProductPage = lazy(() => delayLazy(import("pages/ProductPage"), 500));
 
 function App() {
   return (
     <Fragment>
-      <Suspense>
+      <Suspense fallback={<LoadingPage></LoadingPage>}>
         <Routes>
           <Route path="/" element={<Main></Main>}>
             <Route index element={<HomePage></HomePage>}></Route>
@@ -37,6 +38,12 @@ function App() {
       </Suspense>
     </Fragment>
   );
+}
+
+function delayLazy(promise, time = 1000) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, time);
+  }).then(() => promise);
 }
 
 export default App;
