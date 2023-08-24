@@ -90,10 +90,10 @@ const CategoryPage = () => {
       {!isLoading && products && (
         <Helmet
           onChangeClientState={(newState, addedTags, removedTags) => {}}
-          defaultTitle="LIALILI"
-          titleTemplate="LIALILI | %s"
+          defaultTitle="Lialili Studio"
+          titleTemplate="Lialili | %s"
         >
-          <title>{products?.category?.title}</title>
+          <title>{products[0]?.category?.title}</title>
           <meta name="description" content="Category Page" />
           {createMetaTagFacebook(
             "article",

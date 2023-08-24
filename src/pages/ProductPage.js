@@ -9,7 +9,6 @@ import ProductListSwiperLoading from "components/loading/ProductListSwiperLoadin
 import productsApi from "api/productsApi";
 import { useParams } from "react-router-dom";
 import useSWR from "swr";
-import { v4 as uuidv4 } from "uuid";
 
 const ProductPage = () => {
   const { idProduct } = useParams();
@@ -23,8 +22,8 @@ const ProductPage = () => {
       {!isLoading && product && (
         <Helmet
           onChangeClientState={(newState, addedTags, removedTags) => {}}
-          defaultTitle="LIALILI"
-          titleTemplate="LIALILI | %s"
+          defaultTitle="Lialili Studio"
+          titleTemplate="Lialili | %s"
         >
           <title>{product?.title}</title>
           <meta property="og:url" content={window.location.href} />

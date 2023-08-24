@@ -40,7 +40,7 @@ const HomePage = () => {
     <Container>
       <Helmet
         onChangeClientState={(newState, addedTags, removedTags) => {}}
-        defaultTitle="LIALILI"
+        defaultTitle="Lialili Studio"
         titleTemplate="LIALILI | %s"
       >
         <meta property="og:url" content="https://dev.lialili.com/" />

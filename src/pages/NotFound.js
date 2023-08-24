@@ -7,7 +7,7 @@ const NotFound = () => {
     <div class="flex items-center justify-center h-screen flex-col -mt-10 sm:-mt-20 mx-4">
       <Helmet
         onChangeClientState={(newState, addedTags, removedTags) => {}}
-        defaultTitle="LIALILI"
+        defaultTitle="Lialili Studio"
         titleTemplate="LIALILI | %s"
       >
         <meta property="og:url" content="https://dev.lialili.com/" />
