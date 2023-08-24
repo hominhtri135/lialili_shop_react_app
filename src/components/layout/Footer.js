@@ -13,7 +13,7 @@ const Footer = () => {
             <div className="mb-4 md:mb-0 md:mr-6">
               <div className="flex items-center justify-center">
                 <img
-                  src={process.env.REACT_APP_PUBLIC_URL + "/Lialili-01.svg"}
+                  src={process.env.REACT_APP_PUBLIC_URL + "Lialili-01.svg"}
                   className="h-12"
                   alt="Lialili Logo"
                 />
