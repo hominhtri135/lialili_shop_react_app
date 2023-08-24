@@ -10,7 +10,6 @@ const NotFound = () => {
         defaultTitle="LIALILI"
         titleTemplate="LIALILI | %s"
       >
-        <title>LIALILI STUDIO</title>
         <meta property="og:url" content="https://dev.lialili.com/" />
         <meta property="og:type" content="article" />
         <meta property="og:title" content="Lialili Studio" />
