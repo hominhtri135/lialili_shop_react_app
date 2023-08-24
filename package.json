@@ -2,7 +2,6 @@
   "name": "lialili_shop_react_app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://hominhtri135.github.io/lialili_shop_react_app",
   "dependencies": {
     "@headlessui/react": "^1.7.17",
     "@testing-library/jest-dom": "^5.17.0",
