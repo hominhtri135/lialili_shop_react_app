@@ -55,7 +55,13 @@ const Header = () => {
             to="/"
             className={`absolute left-0 right-0 mx-auto w-[100px]`}
           >
-            <p className="font-bold text-2xl text-center">LIALILI</p>
+            <p className="font-bold text-2xl text-center">
+              <img
+                src={process.env.REACT_APP_PUBLIC_URL + "Lialili-01.svg"}
+                className="h-12"
+                alt="Lialili Logo"
+              />
+            </p>
           </NavLink>
           <div className="absolute right-0 mr-4 sm:mr-6 lg:mr-8">
             <NavbarActions></NavbarActions>

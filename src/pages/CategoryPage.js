@@ -5,6 +5,7 @@ import Billboard from "components/ui/Billboard";
 import CategoryLoading from "components/loading/CategoryLoading";
 import Container from "components/layout/Container";
 import Filter from "components/filter/Filter";
+import { Helmet } from "react-helmet";
 import MobileFilters from "components/filter/MobileFilters";
 import NoResults from "components/layout/NoResults";
 import ProductCard from "components/product/ProductCard";
@@ -17,11 +18,18 @@ const sizes = [
   { id: "1", name: "S", value: "S" },
   { id: "2", name: "M", value: "M" },
   { id: "3", name: "L", value: "L" },
+  { id: "2", name: "XL", value: "XL" },
 ];
 const colors = [
-  { id: "1", name: "Xanh", value: "Xanh" },
-  { id: "2", name: "Đỏ", value: "Đỏ" },
-  { id: "3", name: "Vàng", value: "Vàng" },
+  { id: "1", name: "Đen", value: "Đen" },
+  { id: "2", name: "Trắng", value: "Trắng" },
+  { id: "3", name: "Đỏ", value: "Đỏ" },
+  { id: "4", name: "Cam", value: "Cam" },
+  { id: "5", name: "Vàng", value: "Vàng" },
+  { id: "6", name: "Hồng", value: "Hồng" },
+  { id: "7", name: "Tím", value: "Tím" },
+  { id: "8", name: "Xanh Lá", value: "Xanh Lá" },
+  { id: "9", name: "Xanh Dương", value: "Xanh Dương" },
 ];
 
 const CategoryPage = () => {
@@ -35,14 +43,10 @@ const CategoryPage = () => {
     size: searchParams.get("size"),
     page: searchParams.get("page") || 1,
   });
-  console.log("CategoryPage ~ params:", params);
-
   const { data, isLoading } = useSWR(
     [idCategory, params],
     ([idCategory, params]) => categoryApi.getAllItemById(idCategory, params)
   );
-  console.log("CategoryPage ~ data:", data);
-
   const products = data?.items?.data || [];
   const total_pages = data?.items?.last_page > 1 ? data?.items?.last_page : 0;
 
@@ -64,10 +68,49 @@ const CategoryPage = () => {
     setSearchParams(query);
 
     setNextPage(event.selected + 1);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    // window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0 });
   };
+
+  function createMetaTagFacebook(type, title, description, image) {
+    const metaTagFaceBook = [];
+    if (type) metaTagFaceBook.push({ property: "og:type", content: type });
+    if (title) metaTagFaceBook.push({ property: "og:title", content: title });
+    if (description)
+      metaTagFaceBook.push({
+        property: "og:description",
+        content: description,
+      });
+    if (image) metaTagFaceBook.push({ property: "og:image", content: image });
+    return metaTagFaceBook;
+  }
+
   return (
     <div className="bg-white mb-10">
+      {!isLoading && products && (
+        <Helmet
+          onChangeClientState={(newState, addedTags, removedTags) => {}}
+          defaultTitle="LIALILI"
+          titleTemplate="LIALILI | %s"
+        >
+          <title>{products?.category?.title}</title>
+          <meta name="description" content="Category Page" />
+          {createMetaTagFacebook(
+            "article",
+            products?.category?.title,
+            products?.category?.title,
+            "/Lialili-01.jpg"
+          ).map((item, index) => {
+            return (
+              <meta
+                property={item.property}
+                content={`${item.content}`}
+                key={index}
+              />
+            );
+          })}
+        </Helmet>
+      )}
       <Container>
         <div className="min-h-[calc(100vh-146px)]">
           <Billboard />

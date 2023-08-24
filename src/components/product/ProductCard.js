@@ -46,7 +46,6 @@ const ProductCard = ({ data }) => {
       };
 
       const response = await shopApi.addCart(itemCart);
-      console.log("ProductCard ~ response:", response);
       cart.addItem(response.item);
       toast.success("Item added to cart", {
         id: toastId,

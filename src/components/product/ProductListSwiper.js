@@ -6,9 +6,11 @@ import React from "react";
 import categoryApi from "api/categoryApi";
 import useSWR from "swr";
 
-const ProductListSwiper = ({ title, categoryId = 0 }) => {
-  const { data: dataRelated } = useSWR(categoryId, categoryApi.getAllItemById);
-  console.log("ProductListSwiper ~ dataRelated:", dataRelated);
+const ProductListSwiper = ({ title, idCategory = 1 }) => {
+  const { data: dataRelated } = useSWR(
+    [idCategory, { limit: 6 }],
+    ([idCategory, params]) => categoryApi.getAllItemById(idCategory, params)
+  );
 
   if (!dataRelated) {
     return null;

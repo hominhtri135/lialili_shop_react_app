@@ -8,12 +8,10 @@ const Filter = ({ data, name, valueKey }) => {
   const location = useLocation();
 
   const selectedValue = searchParams.get(valueKey);
-  console.log("Filter ~ selectedValue:", selectedValue);
   const navigate = useNavigate();
 
   const onClick = (id) => {
     const current = qs.parse(searchParams.toString());
-    console.log("onClick ~ current:", current);
     const query = {
       ...current,
       [valueKey]: id,

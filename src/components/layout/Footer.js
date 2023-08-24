@@ -22,10 +22,9 @@ const Footer = () => {
             <ul className="text-gray-600 p-2">
               <li className="space-y-2">
                 <p>
-                  Địa chỉ: Lorem ipsum dolor sit amet consectetur adipisicing
-                  elit.
+                  Địa chỉ: 14 đường số 4, xã Phước Kiển, huyện Nhà Bè, TP Hồ Chí
+                  Minh
                 </p>
-                <p>SĐT: 0123456789</p>
               </li>
             </ul>
           </div>

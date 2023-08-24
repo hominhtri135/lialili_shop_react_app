@@ -7,7 +7,6 @@ const useCart = create(
     (set, get) => ({
       items: [],
       addItem: (data) => {
-        console.log("useCart ~ data:", data);
         const currentItems = get().items;
         const existingItem = currentItems.find((item) => item.id === data.id);
 

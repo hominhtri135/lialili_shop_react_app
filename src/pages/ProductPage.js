@@ -1,6 +1,7 @@
 import Container from "components/layout/Container";
 import Gallery from "components/gallery/Gallery";
 import GalleryLoading from "components/loading/GalleryLoading";
+import { Helmet } from "react-helmet";
 import Info from "components/ui/Info";
 import InfoLoading from "components/loading/InfoLoading";
 import ProductListSwiper from "components/product/ProductListSwiper";
@@ -8,6 +9,7 @@ import ProductListSwiperLoading from "components/loading/ProductListSwiperLoadin
 import productsApi from "api/productsApi";
 import { useParams } from "react-router-dom";
 import useSWR from "swr";
+import { v4 as uuidv4 } from "uuid";
 
 const ProductPage = () => {
   const { idProduct } = useParams();
@@ -18,6 +20,20 @@ const ProductPage = () => {
 
   return (
     <div className="bg-white">
+      {!isLoading && product && (
+        <Helmet
+          onChangeClientState={(newState, addedTags, removedTags) => {}}
+          defaultTitle="LIALILI"
+          titleTemplate="LIALILI | %s"
+        >
+          <title>{product?.title}</title>
+          <meta property="og:url" content={window.location.href} />
+          <meta property="og:type" content="article" />
+          <meta property="og:title" content={product?.title} />
+          <meta property="og:description" content={product?.description} />
+          <meta property="og:image" content={product?.image} />
+        </Helmet>
+      )}
       <Container>
         <div className="px-4 py-10 sm:px-6 lg:px-8 min-h-screen">
           <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8">
@@ -33,7 +49,7 @@ const ProductPage = () => {
           {!isLoading && (
             <ProductListSwiper
               title="Related Items"
-              categoryId={product?.category_id}
+              idCategory={product?.category_id}
             ></ProductListSwiper>
           )}
         </div>

@@ -10,7 +10,6 @@ import useAuth from "hooks/useAuth";
 import useCart from "hooks/useCart";
 
 const Info = ({ data }) => {
-  console.log("Info ~ data:", data);
   const authModal = useAuth();
   const { isUserValid } = useAuth((state) => state);
   const cart = useCart();
@@ -251,10 +250,10 @@ const Info = ({ data }) => {
         </div> */}
         <div className="flex items-start gap-x-4 ">
           <h3 className="font-semibold text-black">Quantity:</h3>
-          <div class="flex items-center border border-gray-200 rounded">
+          <div className="flex items-center border border-gray-200 rounded">
             <button
               type="button"
-              class="w-10 h-10 leading-10 text-gray-600 transition hover:opacity-75"
+              className="w-10 h-10 leading-10 text-gray-600 transition hover:opacity-75"
               onClick={() =>
                 setQuantity(quantity - 1 > 0 ? quantity - 1 : quantity)
               }
@@ -265,19 +264,18 @@ const Info = ({ data }) => {
             <input
               type="number"
               id="Quantity"
-              defaultValue={quantity}
               value={quantity}
               onChange={(e) =>
                 e.target.value > 0 && e.target.value <= 10
                   ? setQuantity(e.target.value)
                   : setQuantity(1)
               }
-              class="h-10 w-16 border-transparent text-center [-moz-appearance:_textfield] sm:text-sm [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none"
+              className="h-10 w-16 border-transparent text-center [-moz-appearance:_textfield] sm:text-sm [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none"
             />
 
             <button
               type="button"
-              class="w-10 h-10 leading-10 text-gray-600 transition hover:opacity-75"
+              className="w-10 h-10 leading-10 text-gray-600 transition hover:opacity-75"
               onClick={() =>
                 setQuantity((quantity) =>
                   quantity + 1 <= 10 ? quantity + 1 : quantity

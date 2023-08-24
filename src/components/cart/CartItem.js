@@ -7,12 +7,9 @@ import { toast } from "react-hot-toast";
 import useCart from "hooks/useCart";
 
 const CartItem = ({ data }) => {
-  console.log("CartItem ~ data:", data);
   const cart = useCart();
 
   const onRemove = () => {
-    console.log("onRemove ~ id:", data.id);
-
     try {
       const response = shopApi.deleteCartItem(data.id);
       toast.promise(response, {
@@ -22,7 +19,6 @@ const CartItem = ({ data }) => {
           return `Item removed from cart. ${res?.message}`;
         },
         error: (err) => {
-          console.log("onRemove ~ err:", err);
           return `Error: ${err?.message}`;
         },
       });
