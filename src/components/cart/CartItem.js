@@ -86,12 +86,12 @@ const CartItem = ({ data }) => {
   }, [data.id, quantity]);
 
   useEffect(() => {
-    setCount((count) => {
-      return count + 1;
-    });
-    if (count <= 2) {
-      return;
-    }
+    // setCount((count) => {
+    //   return count + 1;
+    // });
+    // if (count <= 2) {
+    //   return;
+    // }
 
     const timer = setTimeout(() => {
       updateCart();
