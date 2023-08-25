@@ -5,7 +5,7 @@ import ProductCard from "./ProductCard";
 import React from "react";
 import categoryApi from "api/categoryApi";
 import useSWR from "swr";
-
+import { v4 as uuidv4 } from "uuid";
 const ProductListSwiper = ({ title, idCategory = 1 }) => {
   const { data: dataRelated } = useSWR(
     [idCategory, { limit: 6 }],
@@ -35,7 +35,7 @@ const ProductListSwiper = ({ title, idCategory = 1 }) => {
               }}
             >
               {items.map((item) => (
-                <SwiperSlide key={item.id}>
+                <SwiperSlide key={uuidv4()}>
                   <ProductCard data={item}></ProductCard>
                 </SwiperSlide>
               ))}

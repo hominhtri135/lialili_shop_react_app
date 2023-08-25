@@ -13,6 +13,7 @@ import ReactPaginate from "react-paginate";
 import categoryApi from "api/categoryApi";
 import qs from "query-string";
 import useSWR from "swr";
+import { v4 as uuidv4 } from "uuid";
 
 const sizes = [
   { id: "1", name: "S", value: "S" },
@@ -33,7 +34,8 @@ const colors = [
 ];
 
 const CategoryPage = () => {
-  const { idCategory } = useParams();
+  const { slugCategory } = useParams();
+  const idCategory = slugCategory.split("-").pop();
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [nextPage, setNextPage] = useState(1);
@@ -125,7 +127,7 @@ const CategoryPage = () => {
                   {products.length === 0 && <NoResults />}
                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                     {products.map((item) => (
-                      <ProductCard key={item.id} data={item} />
+                      <ProductCard key={uuidv4()} data={item} />
                     ))}
                   </div>
                 </div>

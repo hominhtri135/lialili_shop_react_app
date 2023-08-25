@@ -4,7 +4,7 @@ import CartItem from "components/cart/CartItem";
 import Container from "components/layout/Container";
 import Summary from "components/cart/Summary";
 import useCart from "hooks/useCart";
-
+import { v4 as uuidv4 } from "uuid";
 const CartPage = () => {
   const [isMounted, setIsMounted] = useState(false);
   const cart = useCart();
@@ -30,7 +30,7 @@ const CartPage = () => {
               <ul>
                 {cart.items.length > 0 &&
                   cart.items.map((item) => (
-                    <CartItem key={item.id} data={item} />
+                    <CartItem key={uuidv4()} data={item} />
                   ))}
               </ul>
             </div>

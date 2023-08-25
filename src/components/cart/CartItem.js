@@ -56,10 +56,10 @@ const CartItem = ({ data }) => {
           </div>
           <Currency value={data?.product?.price} />
         </div>
-        <div class="flex items-center border border-gray-200 rounded w-fit">
+        <div className="flex items-center border border-gray-200 rounded w-fit">
           <button
             type="button"
-            class="w-10 h-10 leading-10 text-gray-600 transition hover:opacity-75"
+            className="w-10 h-10 leading-10 text-gray-600 transition hover:opacity-75"
           >
             -
           </button>
@@ -68,12 +68,12 @@ const CartItem = ({ data }) => {
             type="number"
             id="Quantity"
             value={data?.quantity}
-            class="h-10 w-16 border-transparent text-center [-moz-appearance:_textfield] sm:text-sm [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none"
+            className="h-10 w-16 border-transparent text-center [-moz-appearance:_textfield] sm:text-sm [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none"
           />
 
           <button
             type="button"
-            class="w-10 h-10 leading-10 text-gray-600 transition hover:opacity-75"
+            className="w-10 h-10 leading-10 text-gray-600 transition hover:opacity-75"
           >
             +
           </button>

@@ -2,6 +2,7 @@ import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 
 import React from "react";
 import qs from "query-string";
+import { v4 as uuidv4 } from "uuid";
 
 const Filter = ({ data, name, valueKey }) => {
   const [searchParams] = useSearchParams();
@@ -42,7 +43,7 @@ const Filter = ({ data, name, valueKey }) => {
       <hr className="my-4" />
       <div className="flex flex-wrap gap-2">
         {data.map((filter) => (
-          <div key={filter.id} className="flex items-center">
+          <div key={uuidv4()} className="flex items-center">
             {/* <Button
               className={`rounded-md text-sm p-2 border border-gray-300 ${
                 selectedValue === filter.id

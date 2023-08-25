@@ -24,11 +24,11 @@ function App() {
           <Route path="/" element={<Main></Main>}>
             <Route index element={<HomePage></HomePage>}></Route>
             <Route
-              path="/category/:idCategory"
+              path="/category/:slugCategory"
               element={<CategoryPage></CategoryPage>}
             ></Route>
             <Route
-              path="/product/:idProduct"
+              path="/product/:slugProduct"
               element={<ProductPage></ProductPage>}
             ></Route>
             <Route path="/cart" element={<CartPage></CartPage>}></Route>

@@ -11,7 +11,8 @@ import { useParams } from "react-router-dom";
 import useSWR from "swr";
 
 const ProductPage = () => {
-  const { idProduct } = useParams();
+  const { slugProduct } = useParams();
+  const idProduct = slugProduct.split("-").pop();
 
   const { data, isLoading } = useSWR(idProduct, productsApi.get);
 

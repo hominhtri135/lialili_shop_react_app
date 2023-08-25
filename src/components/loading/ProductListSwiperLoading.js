@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import ProductItemLoading from "./ProductItemLoading";
 import React from "react";
-
+import { v4 as uuidv4 } from "uuid";
 const ProductListSwiperLoading = () => {
   return (
     <div className="space-y-4">
@@ -24,8 +24,8 @@ const ProductListSwiperLoading = () => {
           }}
         >
           <SkeletonTheme>
-            {new Array(4).fill(0).map((item, index) => (
-              <SwiperSlide key={index}>
+            {new Array(4).fill(0).map((item) => (
+              <SwiperSlide key={uuidv4()}>
                 <ProductItemLoading></ProductItemLoading>
               </SwiperSlide>
             ))}

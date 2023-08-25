@@ -3,6 +3,8 @@ import NavbarLoading from "components/loading/NavbarLoading";
 import React from "react";
 import categoryApi from "api/categoryApi";
 import useSWR from "swr";
+import Slugify from "components/ui/VietnameseSlug";
+import { v4 as uuidv4 } from "uuid";
 
 const MainNavbar = () => {
   const { data, isLoading } = useSWR({}, categoryApi.getAll);
@@ -14,14 +16,14 @@ const MainNavbar = () => {
       {!isLoading &&
         categories.map((route) => (
           <NavLink
-            to={`/category/${route.id}`}
+            to={`/category/${Slugify(route.title || "")}-${route.id}`}
             className="text-base transition-colors hover:text-black text-neutral-500"
             style={({ isActive }) =>
               isActive
                 ? { fontWeight: "700", color: "black" }
                 : { fontWeight: "500" }
             }
-            key={route.id}
+            key={uuidv4()}
           >
             {route.title}
           </NavLink>

@@ -7,6 +7,8 @@ import IconButton from "components/button/IconButton";
 import { NavLink } from "react-router-dom";
 import categoryApi from "api/categoryApi";
 import useSWR from "swr";
+import Slugify from "components/ui/VietnameseSlug";
+import { v4 as uuidv4 } from "uuid";
 
 const MobileNavbar = () => {
   const [open, setOpen] = useState(false);
@@ -40,20 +42,20 @@ const MobileNavbar = () => {
 
             <div className="py-4">
               {!isLoading &&
-                categories.map((route, index) => (
+                categories.map((route) => (
                   <div
                     className="shadow-md border-t py-4 flex items-center justify-center"
-                    key={index}
+                    key={uuidv4()}
                   >
                     <NavLink
-                      to={`/category/${route.id}`}
+                      to={`/category/${Slugify(route.title || "")}-${route.id}`}
                       className="text-xl transition-colors hover:text-black text-neutral-500"
                       style={({ isActive }) =>
                         isActive
                           ? { fontWeight: "700", color: "black" }
                           : { fontWeight: "500" }
                       }
-                      key={route.id}
+                      key={uuidv4()}
                     >
                       {route.title}
                     </NavLink>

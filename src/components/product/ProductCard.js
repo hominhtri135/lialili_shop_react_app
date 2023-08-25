@@ -19,7 +19,7 @@ const ProductCard = ({ data }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`/product/${data?.id}`);
+    navigate(`/product/${data?.slug}-${data?.id}`);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
