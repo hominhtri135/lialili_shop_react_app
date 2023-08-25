@@ -3,6 +3,7 @@ import React, { useState } from "react";
 
 import Billboard from "components/ui/Billboard";
 import Container from "components/layout/Container";
+import { Helmet } from "react-helmet-async";
 import ProductList from "components/product/ProductList";
 import ProductListLoading from "components/loading/ProductListLoading";
 import ReactPaginate from "react-paginate";
@@ -37,6 +38,26 @@ const HomePage = () => {
 
   return (
     <Container>
+      <Helmet>
+        <title>Lialili Studio</title>
+        <link rel="canonical" href={window.location.href} />
+        <meta
+          name="description"
+          content="Store: Robins, Lầu 2, TTTM Crescent Mall, 101 Tôn Dật Tiên, phường Tân Phú, quậnt 7, TP HCM"
+        />
+
+        <meta property="og:url" content="https://dev.lialili.com/" />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content="Lialili Studio" />
+        <meta
+          property="og:description"
+          content="Store: Robins, Lầu 2, TTTM Crescent Mall, 101 Tôn Dật Tiên, phường Tân Phú, quậnt 7, TP HCM"
+        />
+
+        <meta property="og:image" content="%PUBLIC_URL%/Lialili_LogoFB.jpg" />
+        <meta property="og:image:alt" content="Logo Lialili" />
+      </Helmet>
+
       <div className="space-y-10 pb-10 min-h-[calc(100vh-146px)]">
         <Billboard></Billboard>
 
