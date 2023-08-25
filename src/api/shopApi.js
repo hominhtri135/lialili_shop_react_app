@@ -5,6 +5,10 @@ const shopApi = {
     const url = `/shop/addItemsToCart`;
     return axiosClient.post(url, data);
   },
+  updateCart: (data) => {
+    const url = `/shop/updateCartItemQuantity`;
+    return axiosClient.put(url, data);
+  },
   deleteCartItem: (id) => {
     const url = `/shop/deleteCartItem/${id}`;
     return axiosClient.delete(url);

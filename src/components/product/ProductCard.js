@@ -31,14 +31,22 @@ const ProductCard = ({ data }) => {
 
   const onAddToCart = async (event) => {
     event.stopPropagation();
+
     if (!isUserValid) {
       toast.error("Please login to add to cart");
       authModal.onOpen("login");
       return;
     }
 
-    const toastId = toast.loading("Loading...");
+    const currentItem = cart.items.find(
+      (item) => item.product_attributes.id === data?.product_attributes[0]?.id
+    );
+    if (currentItem && currentItem.quantity + 1 > 10) {
+      toast.error("Only add up to 10 product!");
+      return;
+    }
 
+    const toastId = toast.loading("Loading...");
     try {
       const itemCart = {
         product_attribute_id: data?.product_attributes[0]?.id,
@@ -51,6 +59,20 @@ const ProductCard = ({ data }) => {
         id: toastId,
       });
     } catch (error) {
+      if (error?.response?.data?.message === "Unauthenticated.") {
+        authModal.onLogout();
+        cart.removeAll();
+        toast.error(
+          "Token expired, please login and try again" +
+            error?.response?.message,
+          {
+            id: toastId,
+          }
+        );
+        authModal.onOpen("login");
+        return;
+      }
+
       toast.error("Error: " + error?.response?.message, {
         id: toastId,
       });
@@ -65,11 +87,7 @@ const ProductCard = ({ data }) => {
       <div className="aspect-square rounded-xl bg-gray-100 relative">
         {data && (
           <img
-            // src={`https://down-vn.img.susercontent.com/file/${
-            //   dataImagesProduct[0].image.split(".")[0]
-            // }`}
             src={`${data?.image}`}
-            // src="https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcGYtbWlzYzE0LWFkajAwOTM3LWFkai1iXzEuanBn.jpg"
             fill="true"
             alt="Lialili Product"
             className="aspect-square object-cover w-full rounded-md"

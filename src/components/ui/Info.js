@@ -21,43 +21,37 @@ const Info = ({ data }) => {
       authModal.onOpen("login");
       return;
     }
+    const currentItem = cart.items.find(
+      (item) => item.product_attributes.id === itemCart.product_attribute_id
+    );
+
+    if (currentItem && currentItem.quantity + itemCart.quantity > 10) {
+      toast.error("Only add up to 10 product!");
+      return;
+    }
 
     const toastId = toast.loading("Loading...");
     try {
       const response = await shopApi.addCart(itemCart);
-      console.log("onAddToCart ~ response:", response.item);
       cart.addItem(response.item);
       toast.success("Item added to cart", {
         id: toastId,
       });
-
-      // if (response.status === "fails") {
-      //   toast.error("Item already in cart.", {
-      //     id: toastId,
-      //   });
-      // } else {
-      //   toast.success("This worked", {
-      //     id: toastId,
-      //   });
-      // }
-
-      // toast.promise(response, {
-      //   loading: "Loading",
-      //   success: (res) => {
-      //     console.log("onAddToCart ~ res:", res);
-      //     if (res?.status === "fails") {
-      //       toast.error("Item already in cart.");
-      //     } else {
-      //       return `${res?.status}`;
-      //     }
-      //     toast.dismiss();
-      //     // cart.addItem(data);
-      //   },
-      //   error: (err) => {
-      //     return `Error: ${err?.response?.message}`;
-      //   },
-      // });
     } catch (error) {
+      if (error?.response?.data?.message === "Unauthenticated.") {
+        authModal.onLogout();
+        cart.removeAll();
+        toast.error(
+          "Token expired, please login and try again" +
+            error?.response?.message,
+          {
+            id: toastId,
+          }
+        );
+        authModal.onOpen("login");
+        return;
+      }
+
       toast.error("Error: " + error?.response?.message, {
         id: toastId,
       });
@@ -103,8 +97,6 @@ const Info = ({ data }) => {
     });
   }, [quantity, selectedColor]);
 
-  console.log("Info ~ selectedColor:", selectedColor);
-  console.log("Info ~ itemCart:", itemCart);
   return (
     <div>
       <h1 className="text-3xl font-bold text-gray-900">{data?.title}</h1>
