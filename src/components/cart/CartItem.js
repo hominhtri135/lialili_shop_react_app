@@ -12,7 +12,7 @@ const CartItem = ({ data }) => {
   const authModal = useAuth();
   const cart = useCart();
   const navigate = useNavigate();
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(1);
   const [quantity, setQuantity] = useState(data.quantity);
   const [itemCart, setItemCart] = useState({
     id: data.id,
@@ -86,22 +86,23 @@ const CartItem = ({ data }) => {
   }, [data.id, quantity]);
 
   useEffect(() => {
-    // setCount((count) => {
-    //   return count + 1;
-    // });
-    // if (count <= 2) {
-    //   return;
-    // }
+    setCount((count) => {
+      console.log("setCount ~ count:", count + 1);
+      return count + 1;
+    });
+    if (count > 2) {
+      console.log("setCount ~ count in timer:", count + 1);
+      const timer = setTimeout(() => {
+        updateCart();
+      }, 1000);
 
-    const timer = setTimeout(() => {
-      updateCart();
-    }, 1000);
+      return () => {
+        clearTimeout(timer);
+      };
+    }
 
-    return () => {
-      clearTimeout(timer);
-    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [itemCart]);
+  }, [quantity]);
 
   return (
     <li className="flex py-6 border-b">
