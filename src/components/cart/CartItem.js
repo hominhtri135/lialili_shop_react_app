@@ -37,7 +37,23 @@ const CartItem = ({ data }) => {
       // });
       setIsLoading(false);
     } catch (error) {
-      toast.error("Error: " + error?.response?.data?.message, { id: toastId });
+      if (error?.response?.data?.message === "Unauthenticated.") {
+        authModal.onLogout();
+        cart.removeAll();
+        toast.error(
+          "Token expired, please login and try again" +
+            error?.response?.message,
+          {
+            id: toastId,
+          }
+        );
+        authModal.onOpen("login");
+        return;
+      }
+
+      toast.error("Error: " + error?.response?.message, {
+        id: toastId,
+      });
     }
     setIsLoading(false);
   };
@@ -185,7 +201,7 @@ const CartItem = ({ data }) => {
                 onRemove();
               }
             }}
-            disabled={isLoading}
+            disabled={true}
             className="h-10 w-16 border-transparent text-center [-moz-appearance:_textfield] sm:text-sm [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none"
           />
 
