@@ -5,7 +5,7 @@ import Billboard from "components/ui/Billboard";
 import CategoryLoading from "components/loading/CategoryLoading";
 import Container from "components/layout/Container";
 import Filter from "components/filter/Filter";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import MobileFilters from "components/filter/MobileFilters";
 import NoResults from "components/layout/NoResults";
 import ProductCard from "components/product/ProductCard";
@@ -72,19 +72,6 @@ const CategoryPage = () => {
     window.scrollTo({ top: 0 });
   };
 
-  function createMetaTagFacebook(type, title, description, image) {
-    const metaTagFaceBook = [];
-    if (type) metaTagFaceBook.push({ property: "og:type", content: type });
-    if (title) metaTagFaceBook.push({ property: "og:title", content: title });
-    if (description)
-      metaTagFaceBook.push({
-        property: "og:description",
-        content: description,
-      });
-    if (image) metaTagFaceBook.push({ property: "og:image", content: image });
-    return metaTagFaceBook;
-  }
-
   return (
     <div className="bg-white mb-10">
       {!isLoading && products && (
@@ -94,21 +81,30 @@ const CategoryPage = () => {
           titleTemplate="Lialili | %s"
         >
           <title>{products[0]?.category?.title}</title>
-          <meta name="description" content="Category Page" />
-          {createMetaTagFacebook(
-            "article",
-            products?.category?.title,
-            products?.category?.title,
-            "/Lialili-01.jpg"
-          ).map((item, index) => {
-            return (
-              <meta
-                property={item.property}
-                content={`${item.content}`}
-                key={index}
-              />
-            );
-          })}
+          <link rel="canonical" href={window.location.href} />
+          <meta
+            name="description"
+            content={`Tất cả sản phẩm thuộc danh mục ${
+              products[0]?.category?.title || "Lialili"
+            }`}
+          />
+
+          <meta property="og:url" content={window.location.href} />
+          <meta property="og:type" content="article" />
+          <meta
+            property="og:title"
+            content={`Danh mục sản phẩm ${
+              products[0]?.category?.title || "Lialili"
+            }`}
+          />
+          <meta
+            property="og:description"
+            content={`Tất cả sản phẩm thuộc danh mục ${products[0]?.category?.title} || "Lialili"`}
+          />
+          <meta
+            property="og:image"
+            content="https://scontent.fdad3-5.fna.fbcdn.net/v/t39.30808-6/346500727_1377831933052584_6263561569183124993_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=79otJq24iLcAX-cjVqa&_nc_ht=scontent.fdad3-5.fna&oh=00_AfC7EU9JCK9EGv0L0Hzhz-hIUiiwfBGehe-p4A1KnSGzUw&oe=64ED0F17"
+          />
         </Helmet>
       )}
       <Container>

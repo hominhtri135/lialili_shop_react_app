@@ -24,7 +24,7 @@ const Gallery = ({ images }) => {
                   // }`}
                   src={`${item.image}`}
                   // src="https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcGYtbWlzYzE0LWFkajAwOTM3LWFkai1iXzEuanBn.jpg"
-                  alt=""
+                  alt="Lialili Prodcuct"
                   fill="true"
                   className="object-cover object-center w-full"
                 />

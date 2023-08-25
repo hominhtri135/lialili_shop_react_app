@@ -71,7 +71,7 @@ const ProductCard = ({ data }) => {
             src={`${data?.image}`}
             // src="https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcGYtbWlzYzE0LWFkajAwOTM3LWFkai1iXzEuanBn.jpg"
             fill="true"
-            alt="Product"
+            alt="Lialili Product"
             className="aspect-square object-cover w-full rounded-md"
           />
         )}

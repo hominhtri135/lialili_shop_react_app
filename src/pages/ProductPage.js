@@ -1,7 +1,7 @@
 import Container from "components/layout/Container";
 import Gallery from "components/gallery/Gallery";
 import GalleryLoading from "components/loading/GalleryLoading";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import Info from "components/ui/Info";
 import InfoLoading from "components/loading/InfoLoading";
 import ProductListSwiper from "components/product/ProductListSwiper";
@@ -26,6 +26,9 @@ const ProductPage = () => {
           titleTemplate="Lialili | %s"
         >
           <title>{product?.title}</title>
+          <link rel="canonical" href={window.location.href} />
+          <meta name="description" content={`Sản phẩm ${product?.title}`} />
+
           <meta property="og:url" content={window.location.href} />
           <meta property="og:type" content="article" />
           <meta property="og:title" content={product?.title} />

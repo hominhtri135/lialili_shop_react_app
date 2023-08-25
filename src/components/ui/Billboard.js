@@ -30,9 +30,9 @@ const Billboard = () => {
         className="rounded-xl relative aspect-video md:aspect-[2.4/1] overflow-hidden bg-cover"
       >
         <div className="h-full w-full flex flex-col justify-center items-center text-center gap-y-8">
-          <div className="font-bold text-3xl max-w-xs sm:text-5xl sm:max-w-xl lg:text-6xl sm:min-h-[18%] text-center block overflow-hidden text-ellipsis whitespace-nowrap">
+          <h1 className="font-bold text-3xl max-w-xs sm:text-5xl sm:max-w-xl lg:text-6xl sm:min-h-[18%] text-center block overflow-hidden text-ellipsis whitespace-nowrap">
             {data[2].label}
-          </div>
+          </h1>
         </div>
       </div>
     </div>

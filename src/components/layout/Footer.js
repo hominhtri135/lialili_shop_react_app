@@ -22,8 +22,8 @@ const Footer = () => {
             <ul className="text-gray-600 p-2">
               <li className="space-y-2">
                 <p>
-                  Địa chỉ: 14 đường số 4, xã Phước Kiển, huyện Nhà Bè, TP Hồ Chí
-                  Minh
+                  Địa chỉ: Robins, Lầu 2, TTTM Crescent Mall, 101 Tôn Dật Tiên,
+                  phường Tân Phú, quậnt 7, TP HCM
                 </p>
               </li>
             </ul>
