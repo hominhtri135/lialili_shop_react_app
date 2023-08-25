@@ -4,6 +4,7 @@ import Modal from "./Modal";
 import React from "react";
 import SignUp from "components/ui/SignUp";
 import useAuth from "hooks/useAuth";
+import EmailVerification from "components/ui/EmailVerification";
 
 const AuthModal = () => {
   const authModal = useAuth();
@@ -14,7 +15,10 @@ const AuthModal = () => {
       <div className="w-full">
         {type === "login" && <Login></Login>}
         {type === "signup" && <SignUp></SignUp>}
-        {type === "forgot" && <ForgotPassword></ForgotPassword>}
+        {type === "emailVerification" && (
+          <EmailVerification></EmailVerification>
+        )}
+        {type === "forgotPassword" && <ForgotPassword></ForgotPassword>}
       </div>
     </Modal>
   );

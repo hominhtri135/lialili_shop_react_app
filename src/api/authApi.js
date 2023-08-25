@@ -13,5 +13,13 @@ const authApi = {
     const url = "/auth/register";
     return axiosClient.post(url, data);
   },
+  emailVerification: (data) => {
+    const url = "/account/emailVerification";
+    return axiosClient.post(url, data);
+  },
+  resetPassword: (data) => {
+    const url = "/account/resetPassword";
+    return axiosClient.post(url, data);
+  },
 };
 export default authApi;
