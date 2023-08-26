@@ -105,6 +105,9 @@ const Login = () => {
               autoComplete="off"
             >
               <div>
+                <p className="block mb-2 text-sm font-extralight italic text-gray-400 text-center">
+                  (hint: test@gmail.com | test)
+                </p>
                 <label
                   htmlFor="email"
                   className="block mb-2 text-sm font-medium text-gray-900 "
