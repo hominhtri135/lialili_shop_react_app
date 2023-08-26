@@ -17,33 +17,37 @@ const InfoLoading = () => {
       <hr className="my-4" />
 
       <div className="flex flex-col gap-y-6">
+        {/* size */}
         <div className="flex items-center gap-x-4">
           <h3 className="font-semibold text-black">
             <Skeleton width={45} height={24}></Skeleton>
           </h3>
-          <div className="flex justify-start gap-2">
-            <Skeleton width={25} height={24}></Skeleton>
-            <Skeleton width={25} height={24}></Skeleton>
-            <Skeleton width={25} height={24}></Skeleton>
+          <div className="w-full sm:w-1/3 z-10">
+            <Skeleton height={36}></Skeleton>
           </div>
         </div>
+
+        {/* color */}
         <div className="flex items-center gap-x-4">
           <h3 className="font-semibold text-black">
             <Skeleton width={45} height={24}></Skeleton>
           </h3>
-          <div className="flex justify-start gap-2">
-            <Skeleton width={25} height={24}></Skeleton>
-            <Skeleton width={25} height={24}></Skeleton>
-            <Skeleton width={25} height={24}></Skeleton>
+          <div className="w-full sm:w-1/3 z-10">
+            <Skeleton height={36}></Skeleton>
           </div>
         </div>
-        <div className="flex items-start gap-x-4 ">
+
+        {/* quantity */}
+        <div className="flex items-center gap-x-4 ">
           <h3 className="font-semibold text-black">
             <Skeleton width={45} height={24}></Skeleton>
           </h3>
-          <p className="w-full">
-            <Skeleton height={24} count={8}></Skeleton>
-          </p>
+
+          <Skeleton width={146} height={42}></Skeleton>
+
+          <h3 className="font-extralight italic text-black">
+            <Skeleton width={70} height={24}></Skeleton>
+          </h3>
         </div>
       </div>
 

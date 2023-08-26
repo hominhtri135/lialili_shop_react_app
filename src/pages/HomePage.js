@@ -43,7 +43,7 @@ const HomePage = () => {
         <link rel="canonical" href={window.location.href} />
         <meta
           name="description"
-          content="Store: Robins, Lầu 2, TTTM Crescent Mall, 101 Tôn Dật Tiên, phường Tân Phú, quậnt 7, TP HCM"
+          content="Store 1: Robins, Lầu 2, TTTM Crescent Mall, 101 Tôn Dật Tiên, phường Tân Phú, quậnt 7, TP HCM | Store 2: Lầu G  TTTM Nowzone , Nguyễn Văn Cừu , Quận 1 , Tp Hồ Chí Minh"
         />
 
         <meta property="og:url" content="https://dev.lialili.com/" />
@@ -51,7 +51,7 @@ const HomePage = () => {
         <meta property="og:title" content="Lialili Studio" />
         <meta
           property="og:description"
-          content="Store: Robins, Lầu 2, TTTM Crescent Mall, 101 Tôn Dật Tiên, phường Tân Phú, quậnt 7, TP HCM"
+          content="Store 1: Robins, Lầu 2, TTTM Crescent Mall, 101 Tôn Dật Tiên, phường Tân Phú, quậnt 7, TP HCM | Store 2: Lầu G  TTTM Nowzone , Nguyễn Văn Cừu , Quận 1 , Tp Hồ Chí Minh"
         />
 
         <meta property="og:image" content="%PUBLIC_URL%/Lialili_LogoFB.jpg" />

@@ -1,3 +1,5 @@
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+
 import Container from "components/layout/Container";
 import Gallery from "components/gallery/Gallery";
 import GalleryLoading from "components/loading/GalleryLoading";
@@ -47,6 +49,19 @@ const ProductPage = () => {
               {!isLoading && <Info data={product}></Info>}
             </div>
           </div>
+
+          <div className="my-10">
+            <h3 className="font-bold text-3xl">Description</h3>
+            <div className="px-5 pt-5">
+              {isLoading && (
+                <SkeletonTheme>
+                  <Skeleton height={24} count={4}></Skeleton>
+                </SkeletonTheme>
+              )}
+              {!isLoading && (product?.description || "No description")}
+            </div>
+          </div>
+
           <hr className="my-10" />
           {isLoading && <ProductListSwiperLoading></ProductListSwiperLoading>}
           {!isLoading && (

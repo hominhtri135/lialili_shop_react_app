@@ -9,6 +9,7 @@ import { toast } from "react-hot-toast";
 import useAuth from "hooks/useAuth";
 import useCart from "hooks/useCart";
 import { v4 as uuidv4 } from "uuid";
+
 const Info = ({ data }) => {
   const authModal = useAuth();
   const { isUserValid } = useAuth((state) => state);
@@ -240,7 +241,7 @@ const Info = ({ data }) => {
           <h3 className="font-semibold text-black">Description:</h3>
           <p>{data?.description}</p>
         </div> */}
-        <div className="flex items-start gap-x-4 ">
+        <div className="flex items-center gap-x-4 ">
           <h3 className="font-semibold text-black">Quantity:</h3>
           <div className="flex items-center border border-gray-200 rounded">
             <button

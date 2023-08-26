@@ -22,8 +22,11 @@ const Footer = () => {
             <ul className="text-gray-600 p-2">
               <li className="space-y-2">
                 <p>
-                  Địa chỉ: Robins, Lầu 2, TTTM Crescent Mall, 101 Tôn Dật Tiên,
+                  Store 1: Robins, Lầu 2, TTTM Crescent Mall, 101 Tôn Dật Tiên,
                   phường Tân Phú, quậnt 7, TP HCM
+                </p>
+                <p>
+                  Store 2: Lầu G  TTTM Nowzone , Nguyễn Văn Cừu , Quận 1 , Tp Hồ Chí Minh
                 </p>
               </li>
             </ul>
