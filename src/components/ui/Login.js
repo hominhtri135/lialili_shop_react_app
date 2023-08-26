@@ -136,7 +136,7 @@ const Login = () => {
                     id="password"
                     defaultValue={dataRemember ? dataRemember.password : ""}
                     placeholder="••••••••"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-gray-600 focus:border-gray-600 block w-full p-2.5 "
+                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-gray-600 focus:border-gray-600 block w-full p-2.5 pr-12"
                     required={true}
                     onChange={onChange}
                   />

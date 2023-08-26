@@ -1,7 +1,8 @@
-import authApi from "api/authApi";
-import useAuth from "hooks/useAuth";
 import React, { useState } from "react";
+
+import authApi from "api/authApi";
 import { toast } from "react-hot-toast";
+import useAuth from "hooks/useAuth";
 
 const ForgotPassword = () => {
   const authModal = useAuth();
@@ -104,7 +105,7 @@ const ForgotPassword = () => {
                   name="password"
                   id="password"
                   placeholder="••••••••"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-gray-600 focus:border-gray-600 block w-full p-2.5 "
+                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-gray-600 focus:border-gray-600 block w-full p-2.5 pr-12"
                   required={true}
                   onChange={onChange}
                 />
@@ -169,7 +170,7 @@ const ForgotPassword = () => {
                   name="password_confirmation"
                   id="password_confirmation"
                   placeholder="••••••••"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-gray-600 focus:border-gray-600 block w-full p-2.5 "
+                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-gray-600 focus:border-gray-600 block w-full p-2.5 pr-12"
                   required={true}
                   onChange={onChange}
                 />
