@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import AuthModal from "components/modal/AuthModal";
 import PreviewModal from "components/modal/PreviewModal";
+import ShopModal from "components/modal/ShopModal";
 
 const ModalProvider = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -18,6 +19,7 @@ const ModalProvider = () => {
     <>
       <PreviewModal />
       <AuthModal />
+      <ShopModal />
     </>
   );
 };

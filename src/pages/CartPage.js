@@ -36,7 +36,6 @@ const CartPage = () => {
         return;
       }
 
-      console.log("CartPage ~ data:", data);
       cart.setItems(data.cartItems);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

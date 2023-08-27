@@ -33,7 +33,7 @@ const CartItem = ({ data }) => {
         authModal.onLogout();
         cart.removeAll();
         toast.error(
-          "Token expired, please login and try again" +
+          "Token expired, please login and try again " +
             error?.response?.message,
           {
             id: toastId,
@@ -92,7 +92,7 @@ const CartItem = ({ data }) => {
         authModal.onLogout();
         cart.removeAll();
         toast.error(
-          "Token expired, please login and try again" +
+          "Token expired, please login and try again " +
             error?.response?.message,
           {
             id: toastId,

@@ -14,27 +14,28 @@ const MyDropdown = () => {
   const cart = useCart();
   const user = JSON.parse(localStorage.getItem("user"));
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    const toastId = toast.loading("Loading...");
     try {
-      const response = authApi.logout();
-
-      toast.promise(response, {
-        loading: "Loading",
-        success: (res) => {
-          authModal.onLogout();
-          cart.removeAll();
-          return `${res?.message}`;
-        },
-        error: (err) => {
-          if (err?.response?.data?.message === "Unauthenticated.") {
-            authModal.onLogout();
-            cart.removeAll();
-          }
-
-          return `Error: ${err?.response?.data.message}`;
-        },
+      const response = await authApi.logout();
+      authModal.onLogout();
+      cart.removeAll();
+      toast.success(`${response?.message}`, {
+        id: toastId,
       });
-    } catch (error) {}
+    } catch (error) {
+      if (error?.response?.data?.message === "Unauthenticated.") {
+        authModal.onLogout();
+        cart.removeAll();
+        toast.success(`Logged out`, {
+          id: toastId,
+        });
+        return;
+      }
+      toast.error(`Error: ${error?.response?.data?.message}`, {
+        id: toastId,
+      });
+    }
   };
 
   return (

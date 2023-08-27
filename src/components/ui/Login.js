@@ -63,6 +63,7 @@ const Login = () => {
       if (response?.user) {
         localStorage.setItem("user", JSON.stringify(response.user));
         authModal.setIsUserValid(true);
+        authModal.setUser(response.user);
 
         setFormData({
           email: "",

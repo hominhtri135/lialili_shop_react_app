@@ -4,11 +4,14 @@ import { toast } from "react-hot-toast";
 import useCart from "hooks/useCart";
 import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
+import useShop from "hooks/useShop";
 
 const Summary = () => {
   const [searchParams] = useSearchParams();
   const items = useCart((state) => state.items);
   const removeAll = useCart((state) => state.removeAll);
+  const shopModal = useShop();
+  const isOpen = useShop((state) => state.isOpen);
 
   useEffect(() => {
     if (searchParams.get("success")) {
@@ -25,11 +28,8 @@ const Summary = () => {
     return total + Number(item?.product?.price) * Number(item?.quantity);
   }, 0);
 
-  const onCheckout = async () => {
-    // const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/checkout`, {
-    //   productIds: items.map((item) => item.id)
-    // });
-    // window.location = response.data.url;
+  const onCheckout = () => {
+    shopModal.onOpen();
   };
 
   return (
@@ -43,7 +43,7 @@ const Summary = () => {
       </div>
       <Button
         onClick={onCheckout}
-        disabled={items.length === 0}
+        disabled={items.length === 0 || isOpen}
         className="w-full mt-6"
       >
         Checkout
