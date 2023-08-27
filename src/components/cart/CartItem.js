@@ -1,11 +1,12 @@
+import React, { useEffect, useRef, useState } from "react";
+
 import Currency from "components/ui/Currency";
 import IconButton from "components/button/IconButton";
-import React, { useEffect, useRef, useState } from "react";
 import { X } from "lucide-react";
 import shopApi from "api/shopApi";
 import { toast } from "react-hot-toast";
-import useCart from "hooks/useCart";
 import useAuth from "hooks/useAuth";
+import useCart from "hooks/useCart";
 import { useNavigate } from "react-router-dom";
 
 const CartItem = ({ data }) => {
@@ -25,16 +26,7 @@ const CartItem = ({ data }) => {
       toast.success(`Item removed from cart. ${response?.message}`, {
         id: toastId,
       });
-      // toast.promise(response, {
-      //   loading: "Loading",
-      //   success: (res) => {
-      //     cart.removeItem(data.id);
-      //     return `Item removed from cart. ${res?.message}`;
-      //   },
-      //   error: (err) => {
-      //     return `Error: ${err?.message}`;
-      //   },
-      // });
+
       setIsLoading(false);
     } catch (error) {
       if (error?.response?.data?.message === "Unauthenticated.") {

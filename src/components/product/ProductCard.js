@@ -12,7 +12,7 @@ import useProduct from "hooks/useProduct";
 
 const ProductCard = ({ data }) => {
   const previewModal = useProduct();
-  const authModal = useAuth((state) => state);
+  const authModal = useAuth();
   const { isUserValid } = useAuth((state) => state);
 
   const cart = useCart();

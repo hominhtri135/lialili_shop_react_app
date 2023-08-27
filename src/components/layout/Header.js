@@ -21,7 +21,7 @@ const Header = () => {
     <header className="border-b">
       <div className="w-full bg-[#222] p-2">
         <Container>
-          <div className="relative px-2 sm:px-6 lg:px-8 h-auto min-h-8 block sm:flex sm:items-center justify-end">
+          <div className="relative px-2 sm:px-4 lg:px-6 xl:px-8 h-auto min-h-8 block sm:flex sm:items-center justify-end">
             {/* <div className="text-xs text-[#b2b2b2] font-medium w-full h-8">
               <p className="ml-2 items-center">
                 Free shipping for standard order over $100

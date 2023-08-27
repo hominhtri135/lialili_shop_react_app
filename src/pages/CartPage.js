@@ -4,16 +4,43 @@ import CartItem from "components/cart/CartItem";
 import Container from "components/layout/Container";
 import { Helmet } from "react-helmet-async";
 import Summary from "components/cart/Summary";
+import shopApi from "api/shopApi";
+import useAuth from "hooks/useAuth";
 import useCart from "hooks/useCart";
+import useSWR from "swr";
 import { v4 as uuidv4 } from "uuid";
 
 const CartPage = () => {
   const [isMounted, setIsMounted] = useState(false);
+  const authModal = useAuth();
+  const { isUserValid } = useAuth((state) => state);
   const cart = useCart();
+
+  const { data, isLoading, error } = useSWR(
+    isUserValid ? "getAllCart" : null,
+    shopApi.getAllCart,
+    {
+      refreshInterval: 1000,
+    }
+  );
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
+
+  useEffect(() => {
+    if (isUserValid && !isLoading) {
+      if (error?.response?.data?.message === "Unauthenticated.") {
+        cart.removeAll();
+        authModal.onLogout();
+        return;
+      }
+
+      console.log("CartPage ~ data:", data);
+      cart.setItems(data.cartItems);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data, error]);
 
   if (!isMounted) {
     return null;
