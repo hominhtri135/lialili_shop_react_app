@@ -84,7 +84,7 @@ const MyDropdown = () => {
                     active ? "bg-gray-900 text-white" : "text-gray-900"
                   } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                   onClick={() => {
-                    navigation("/user/purchase");
+                    navigation("/user/orders");
                   }}
                 >
                   {active ? (
@@ -92,7 +92,7 @@ const MyDropdown = () => {
                   ) : (
                     <ClipboardList className="mr-2 h-5 w-5"></ClipboardList>
                   )}
-                  My Purchase
+                  My Orders
                 </button>
               )}
             </Menu.Item>

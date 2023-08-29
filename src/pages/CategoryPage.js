@@ -75,7 +75,7 @@ const CategoryPage = () => {
   };
 
   return (
-    <div className="bg-white mb-10">
+    <div className="bg-white mb-10 min-h-[calc(100vh-339px)]">
       {!isLoading && products && (
         <Helmet
           onChangeClientState={(newState, addedTags, removedTags) => {}}
@@ -110,44 +110,42 @@ const CategoryPage = () => {
         </Helmet>
       )}
       <Container>
-        <div className="min-h-[calc(100vh-146px)]">
-          <Billboard />
+        <Billboard />
 
-          <div className="px-4 sm:px-6 lg:px-8 pb-4">
-            <div className="lg:grid lg:grid-cols-5 lg:gap-x-8">
-              <MobileFilters sizes={sizes} colors={colors} />
-              <div className="hidden lg:block">
-                <Filter valueKey="size" name="Sizes" data={sizes} />
-                <Filter valueKey="color" name="Colors" data={colors} />
-              </div>
-
-              {isLoading && <CategoryLoading></CategoryLoading>}
-              {!isLoading && (
-                <div className="mt-6 lg:col-span-4 lg:mt-0">
-                  {products.length === 0 && <NoResults />}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                    {products.map((item) => (
-                      <ProductCard key={uuidv4()} data={item} />
-                    ))}
-                  </div>
-                </div>
-              )}
+        <div className="px-4 sm:px-6 lg:px-8 pb-4">
+          <div className="lg:grid lg:grid-cols-5 lg:gap-x-8">
+            <MobileFilters sizes={sizes} colors={colors} />
+            <div className="hidden lg:block">
+              <Filter valueKey="size" name="Sizes" data={sizes} />
+              <Filter valueKey="color" name="Colors" data={colors} />
             </div>
-          </div>
 
-          <div className="mt-10">
-            <ReactPaginate
-              breakLabel="..."
-              nextLabel=">"
-              onPageChange={handlePageClick}
-              pageRangeDisplayed={3}
-              pageCount={total_pages}
-              previousLabel="<"
-              initialPage={(parseInt(searchParams.get("page")) || 1) - 1}
-              renderOnZeroPageCount={null}
-              className="pagination"
-            />
+            {isLoading && <CategoryLoading></CategoryLoading>}
+            {!isLoading && (
+              <div className="mt-6 lg:col-span-4 lg:mt-0">
+                {products.length === 0 && <NoResults />}
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                  {products.map((item) => (
+                    <ProductCard key={uuidv4()} data={item} />
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
+        </div>
+
+        <div className="mt-10">
+          <ReactPaginate
+            breakLabel="..."
+            nextLabel=">"
+            onPageChange={handlePageClick}
+            pageRangeDisplayed={3}
+            pageCount={total_pages}
+            previousLabel="<"
+            initialPage={(parseInt(searchParams.get("page")) || 1) - 1}
+            renderOnZeroPageCount={null}
+            className="pagination"
+          />
         </div>
       </Container>
     </div>

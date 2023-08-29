@@ -68,7 +68,7 @@ const UserNavbar = () => {
         </NavLink>
 
         <NavLink
-          to={`/user/purchase`}
+          to={`/user/orders`}
           className="transition-all hover:font-bold text-neutral-500 hover:text-black px-4 py-3 border-l-2 hover:border-black"
           style={({ isActive }) =>
             isActive
@@ -76,7 +76,7 @@ const UserNavbar = () => {
               : { fontWeight: "500" }
           }
         >
-          Purchase
+          Orders
         </NavLink>
 
         <div

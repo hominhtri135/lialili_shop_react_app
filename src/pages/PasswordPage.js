@@ -1,7 +1,21 @@
+/* eslint-disable no-unused-vars */
+
 import React, { useState } from "react";
+
+import { Helmet } from "react-helmet-async";
 
 const PasswordPage = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [formData, setFormData] = useState({});
+
+  const onChange = (e) => {
+    setFormData((prev) => {
+      let helper = { ...prev };
+      helper[`${e.target.id}`] = e.target.value;
+      return helper;
+    });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -9,6 +23,30 @@ const PasswordPage = () => {
 
   return (
     <div className="bg-gray-50 w-full h-full">
+      <Helmet
+        onChangeClientState={(newState, addedTags, removedTags) => {}}
+        defaultTitle="Lialili Studio"
+        titleTemplate="Lialili | %s"
+      >
+        <title>Change Password</title>
+        <link rel="canonical" href={window.location.href} />
+        <meta
+          name="description"
+          content={`Store 1: Robins, Lầu 2, TTTM Crescent Mall, 101 Tôn Dật Tiên, phường Tân Phú, quậnt 7, TP HCM | Store 2: Lầu G  TTTM Nowzone , Nguyễn Văn Cừu , Quận 1 , Tp Hồ Chí Minh`}
+        />
+
+        <meta property="og:url" content={window.location.href} />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={`Cart Page`} />
+        <meta
+          property="og:description"
+          content={`Store 1: Robins, Lầu 2, TTTM Crescent Mall, 101 Tôn Dật Tiên, phường Tân Phú, quậnt 7, TP HCM | Store 2: Lầu G  TTTM Nowzone , Nguyễn Văn Cừu , Quận 1 , Tp Hồ Chí Minh`}
+        />
+        <meta
+          property="og:image"
+          content="https://scontent.fdad3-5.fna.fbcdn.net/v/t39.30808-6/346500727_1377831933052584_6263561569183124993_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=79otJq24iLcAX-cjVqa&_nc_ht=scontent.fdad3-5.fna&oh=00_AfC7EU9JCK9EGv0L0Hzhz-hIUiiwfBGehe-p4A1KnSGzUw&oe=64ED0F17"
+        />
+      </Helmet>
       <div className="p-8 border border-gray-600">
         <h3 className="font-semibold text-md lg:text-lg capitalize pb-5 mb-5 border-b border-gray-600 leading-none">
           Password Change
@@ -30,6 +68,7 @@ const PasswordPage = () => {
                   placeholder="••••••••"
                   className="border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-gray-600 focus:border-gray-600 block w-full p-2.5 pr-12"
                   required={true}
+                  onChange={onChange}
                 />
                 <button
                   type="button"
@@ -95,6 +134,7 @@ const PasswordPage = () => {
                   placeholder="••••••••"
                   className="border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-gray-600 focus:border-gray-600 block w-full p-2.5 pr-12"
                   required={true}
+                  onChange={onChange}
                 />
                 <button
                   type="button"
@@ -160,6 +200,7 @@ const PasswordPage = () => {
                   placeholder="••••••••"
                   className="border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-gray-600 focus:border-gray-600 block w-full p-2.5 pr-12"
                   required={true}
+                  onChange={onChange}
                 />
                 <button
                   type="button"
@@ -212,10 +253,15 @@ const PasswordPage = () => {
 
             <div className="col-span-12">
               <button
-                className="inline-block leading-none uppercase text-white bg-black text-sm bg-dark px-5 py-5 transition-all hover:bg-orange"
-                aria-label="Save Changes"
+                type="submit"
+                disabled={isLoading ? true : false}
+                className="w-full h-10 flex items-center justify-center uppercase text-white bg-black hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-6 text-center"
               >
-                Save Changes
+                {isLoading ? (
+                  <div className="w-8 h-8  border-4 border-white rounded-full animate-spin border-t-transparent"></div>
+                ) : (
+                  "Save Changes"
+                )}
               </button>
             </div>
           </div>

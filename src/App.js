@@ -9,6 +9,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import LoadingPage from "pages/LoadingPage";
 import Main from "components/layout/Main";
 import User from "components/layout/User";
+import useAuth from "hooks/useAuth";
 
 // dynamic imports
 const CartPage = lazy(() => delayLazy(import("pages/CartPage"), 500));
@@ -18,7 +19,8 @@ const NotFound = lazy(() => delayLazy(import("pages/NotFound"), 500));
 const ProductPage = lazy(() => delayLazy(import("pages/ProductPage"), 500));
 const ProfilePage = lazy(() => delayLazy(import("pages/ProfilePage"), 500));
 const PasswordPage = lazy(() => delayLazy(import("pages/PasswordPage"), 500));
-const PurchasePage = lazy(() => delayLazy(import("pages/PurchasePage"), 500));
+const OrdersPage = lazy(() => delayLazy(import("pages/OrdersPage"), 500));
+const OrderDetail = lazy(() => delayLazy(import("pages/OrderDetail"), 500));
 
 function App() {
   return (
@@ -36,19 +38,27 @@ function App() {
               element={<ProductPage></ProductPage>}
             ></Route>
             <Route path="/cart" element={<CartPage></CartPage>}></Route>
-            <Route path="/user" element={<User></User>}>
+            <Route
+              path="/user"
+              element={
+                <ProtectedRoute>
+                  <User></User>
+                </ProtectedRoute>
+              }
+            >
               <Route index element={<Navigate to="/user/profile" replace />} />
               <Route
-                path="/user/profile"
+                path="profile"
                 element={<ProfilePage></ProfilePage>}
               ></Route>
               <Route
-                path="/user/password"
+                path="password"
                 element={<PasswordPage></PasswordPage>}
               ></Route>
+              <Route path="orders" element={<OrdersPage></OrdersPage>}></Route>
               <Route
-                path="/user/purchase"
-                element={<PurchasePage></PurchasePage>}
+                path="order/:orderCode"
+                element={<OrderDetail></OrderDetail>}
               ></Route>
             </Route>
           </Route>
@@ -65,4 +75,11 @@ async function delayLazy(promise, time = 1000) {
   }).then(() => promise);
 }
 
+function ProtectedRoute({ children }) {
+  const { isUserValid } = useAuth((state) => state);
+  if (!isUserValid) {
+    return <Navigate to="/" />;
+  }
+  return children;
+}
 export default App;

@@ -21,5 +21,13 @@ const shopApi = {
     const url = `/shop/getAllCartItems`;
     return axiosClient.get(url);
   },
+  getAllOrders: () => {
+    const url = `/shop/getAllOrders`;
+    return axiosClient.get(url);
+  },
+  getOrderDetail: (orderCode) => {
+    const url = `/shop/getOrderDetail/${orderCode}`;
+    return axiosClient.get(url);
+  },
 };
 export default shopApi;
