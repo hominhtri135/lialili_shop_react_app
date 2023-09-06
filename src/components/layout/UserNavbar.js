@@ -38,17 +38,22 @@ const UserNavbar = () => {
   };
 
   return (
-    <div className="">
-      <p className="pb-6 font-butler text-2xl sm:text-3xl lg:text-4xl">
+    <div className="border-b-2 pb-10 lg:border-0">
+      <p className="pb-6 font-medium text-2xl sm:text-3xl lg:text-4xl text-center lg:text-left">
         My Account
       </p>
-      <div className="flex flex-col pl-3">
+      <div className="flex flex-col px-3 gap-2">
         <NavLink
           to={`/user/profile`}
-          className="transition-all hover:font-bold text-neutral-500 hover:text-black px-4 py-3 border-l-2 hover:border-black"
+          className="transition-all hover:font-bold text-neutral-500 hover:text-black px-4 py-3 border-l-2 hover:border-black "
           style={({ isActive }) =>
             isActive
-              ? { fontWeight: "700", color: "black", borderColor: "black" }
+              ? {
+                  fontWeight: "700",
+                  color: "black",
+                  borderColor: "black",
+                  boxShadow: "5px 5px 15px #c1c8d3",
+                }
               : { fontWeight: "500" }
           }
         >
@@ -60,7 +65,12 @@ const UserNavbar = () => {
           className="transition-all hover:font-bold text-neutral-500 hover:text-black px-4 py-3 border-l-2 hover:border-black"
           style={({ isActive }) =>
             isActive
-              ? { fontWeight: "700", color: "black", borderColor: "black" }
+              ? {
+                  fontWeight: "700",
+                  color: "black",
+                  borderColor: "black",
+                  boxShadow: "5px 5px 15px #c1c8d3",
+                }
               : { fontWeight: "500" }
           }
         >
@@ -72,7 +82,12 @@ const UserNavbar = () => {
           className="transition-all hover:font-bold text-neutral-500 hover:text-black px-4 py-3 border-l-2 hover:border-black"
           style={({ isActive }) =>
             isActive
-              ? { fontWeight: "700", color: "black", borderColor: "black" }
+              ? {
+                  fontWeight: "700",
+                  color: "black",
+                  borderColor: "black",
+                  boxShadow: "5px 5px 15px #c1c8d3",
+                }
               : { fontWeight: "500" }
           }
         >

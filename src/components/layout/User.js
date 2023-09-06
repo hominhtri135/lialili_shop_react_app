@@ -7,7 +7,7 @@ const User = () => {
   return (
     <div className="min-h-[calc(100vh-339px)]">
       <Container>
-        <div className="flex flex-col justify-between pt-10 pb-16 sm:pt-12 sm:pb-20 lg:flex-row lg:pb-24">
+        <div className="flex flex-col justify-between px-4 sm:px-6 lg:px-8 pt-10 pb-16 sm:pt-12 sm:pb-20 lg:pb-24 lg:flex-row">
           <div className="lg:w-1/4">
             <UserNavbar></UserNavbar>
           </div>
